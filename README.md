@@ -1,38 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ScreenHub
 
-## Getting Started
+ScreenHub es una plataforma para cinéfilos y amantes de las series donde podrás encontrar todo lo relacionado con tus películas y series favoritas. Con ScreenHub podrás buscar, descubrir y organizar tus contenidos preferidos, ver detalles sobre cada título, añadirlos a tus listas personalizadas, recibir recomendaciones basadas en tus gustos y más.
 
-First, run the development server:
+Este proyecto utiliza React.js como framework de desarrollo, HTML y CSS para la estructura y diseño de la web y la API de TMDB para obtener información detallada sobre cada película o serie.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+--
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cómo utilizar
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Puedes acceder a ScreenHub a través de la web https://la-has-visto.vercel.app/. No es necesario instalar nada en tu dispositivo, simplemente ingresa a la URL y comienza a disfrutar de todo lo que ScreenHub tiene para ofrecerte.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+--
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Características clave
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+* Búsqueda de películas y series: busca tus películas y series favoritas y obtén información detallada sobre cada una de ellas.
 
-## Learn More
+* Detalles de cada título: descubre detalles sobre cada título como actores, tráilers, sinopsis, plataforma de streaming y más.
 
-To learn more about Next.js, take a look at the following resources:
+* Listas personalizadas: organiza tus películas y series vistas y por ver en listas personalizadas, para tener un seguimiento de todo lo que has visto y lo que te gustaría ver en el futuro.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Recomendaciones personalizadas: basadas en tus películas y series vistas, ScreenHub te sugiere otros títulos que podrían interesarte.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+* Recomendaciones generales: ScreenHub también te ofrece recomendaciones de películas y series generales, para que puedas descubrir nuevos títulos y expandir tus gustos
 
-## Deploy on Vercel
+--
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Limitaciones y problemas conocidos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este proyecto aún se encuentra en desarrollo, por lo que es posible que encuentres algunos errores o limitaciones. Si te encuentras con algún problema, no dudes en comunicárselo al equipo de desarrollo.
+
+--
+
+## Contribuir
+
+Este proyecto es de código abierto y cualquier persona puede contribuir. Si deseas colaborar en el desarrollo de ScreenHub, puedes crear un pull request con tus cambios y mejoras propuestas.
