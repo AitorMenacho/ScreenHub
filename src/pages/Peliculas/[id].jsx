@@ -39,10 +39,9 @@ const Peliculas = () => {
           </div>
           <div className="col-span-1">
             <h1 className="text-3xl font-bold text-white">{movie.title}</h1>
-            <blockquote className="border-l-4 italic my-4 py-2 px-4 bg-stone-950">
-              <p className="mb-2">&ldquo;{movie.tagline}&ldquo;</p>
-              <cite className="text-gray-700">- Autor de la frase</cite>
-            </blockquote>
+            <div className="bg-gradient-to-r from-yellow-500 to-stone-950 text-white py-2 px-4 rounded-lg">
+              <h2 className="text-3xl font-bold">{movie.tagline}</h2>
+            </div>
             <p className="text-white">{movie.overview}</p>
             <p className="text-white">
               <span className="font-bold">Fecha de estreno:</span>{" "}
