@@ -68,6 +68,9 @@ export default function Header() {
             className=" rounded-md py-2 px-4 text-sm focus:outline-none"
             style={{ color: "#000000" }}
             onChange={handleSearch}
+            onKeyDown={(e) => {
+              e.key === "Enter" && searchMovie();
+            }}
           />
           <button
             type="button"

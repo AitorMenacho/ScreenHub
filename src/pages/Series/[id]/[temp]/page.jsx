@@ -11,14 +11,14 @@ const Temporadas = () => {
 
   if (!temporada) return null;
 
-  console.log(imagenes);
+  console.log(temporada.episodes);
 
   return (
     <>
       <div
         className="relative bg-cover bg-center flex justify-center items-center bg-no-repeat bg-fixed bg-gray-900 bg-opacity-50 bg-blend-darken"
         style={{
-          backgroundImage: `url('https://image.tmdb.org/t/p/original${imagenes[1].file_path}')`,
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${imagenes[0]?.file_path})`,
           height: "70vh",
           backgroundColor: "rgba(0,0,0,0.7)",
         }}
@@ -51,26 +51,20 @@ const Temporadas = () => {
         </div>
       </div>
       <div className="container mx-auto my-5">
-        <h2 className="text-xl font-bold mb-3">Temporadas</h2>
+        <h2 className="text-xl font-bold mb-3">Capitulos</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {temporada.seasons &&
-            temporada.seasons.map((season) => (
-              <Link
-                key={season.id}
-                href="[id]/Temporada/[num]"
-                as={`${id}/Temporada/${season.id}`}
-              >
-                <div className="flex flex-col items-center">
-                  <Image
-                    className="w-50 h-50 object-cover"
-                    src={`https://image.tmdb.org/t/p/original${season.poster_path}`}
-                    alt={season.name}
-                    width={200}
-                    height={200}
-                  />
-                  <p className="text-center font-semibold">{season.name}</p>
-                </div>
-              </Link>
+          {temporada.episodes &&
+            temporada.episodes.map((episode) => (
+              <div key={episode.id} className="flex flex-col items-center">
+                <Image
+                  className="w-50 h-50 object-cover"
+                  src={`https://image.tmdb.org/t/p/original${episode.still_path}`}
+                  alt={episode.name}
+                  width={200}
+                  height={200}
+                />
+                <p className="text-center font-semibold">{episode.episode_number + " " + episode.name}</p>
+              </div>
             ))}
         </div>
       </div>

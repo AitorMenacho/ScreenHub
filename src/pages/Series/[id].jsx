@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Series from "../api/Series";
 
 const Serie = () => {
@@ -9,15 +8,12 @@ const Serie = () => {
   const { id } = router.query;
 
   const { tvShow, actors, trailer, recomendation, reviews } = Series(id);
-  const [showAllActors, setShowAllActors] = useState(false);
 
   const handleShowAllActors = () => {
-    setShowAllActors(true);
+    router.push(`/Series/${id}/Actores`);
   };
 
   if (!tvShow) return null;
-
-  console.log(tvShow)
 
   return (
     <>
@@ -25,19 +21,60 @@ const Serie = () => {
         className="relative bg-cover bg-center flex justify-center items-center bg-no-repeat bg-fixed bg-gray-900 bg-opacity-50 bg-blend-darken"
         style={{
           backgroundImage: `url('https://image.tmdb.org/t/p/original${tvShow.backdrop_path}')`,
-          height: "70vh",
+          height: "80vh",
           backgroundColor: "rgba(0,0,0,0.7)",
         }}
       >
-        <div className="container columns-2 z-10">
-          <div className="col-span-2">
+        <div className="container grid grid-cols-2">
+          <div className="col-span-1 flex flex-col items-center">
             <Image
-              className="rounded-lg"
+              className="rounded-t-lg"
               src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
               alt={tvShow.title}
               width={300}
               height={450}
             />
+            <div
+              className="py-2 flex items-center font-bold justify-center bg-stone-950 rounded-b-lg"
+              style={{ width: "300px" }}
+            >
+              {tvShow.status === "Returning Series" && (
+                <p className="text-green-500 flex items-center">
+                  En emisión
+                  <span className="ml-2 h-2 w-2 rounded-full bg-green-500"></span>
+                </p>
+              )}
+              {tvShow.status === "Ended" && (
+                <p className="text-red-500 flex items-center">
+                  Finalizada
+                  <span className="ml-2 h-2 w-2 rounded-full bg-red-500"></span>
+                </p>
+              )}
+              {tvShow.status === "Canceled" && (
+                <p className="text-gray-500 flex items-center">
+                  Cancelada
+                  <span className="ml-2 h-2 w-2 rounded-full bg-gray-500"></span>
+                </p>
+              )}
+              {tvShow.status === "Pilot" && (
+                <p className="text-purple-500 flex items-center">
+                  Piloto
+                  <span className="ml-2 h-2 w-2 rounded-full bg-purple-500"></span>
+                </p>
+              )}
+              {tvShow.status === "In Production" && (
+                <p className="text-blue-500 flex items-center">
+                  En producción
+                  <span className="ml-2 h-2 w-2 rounded-full bg-blue-500"></span>
+                </p>
+              )}
+              {tvShow.status === "Planned" && (
+                <p className="text-yellow-500 flex items-center">
+                  Planificada
+                  <span className="ml-2 h-2 w-2 rounded-full bg-yellow-500"></span>
+                </p>
+              )}
+            </div>
           </div>
           <div className="col-span-1">
             <h1 className="text-3xl font-bold text-white">{tvShow.name}</h1>
@@ -132,14 +169,12 @@ const Serie = () => {
               </Link>
             ))}
         </div>
-        {!showAllActors && (
-          <button
-            className="block mx-auto mt-5 px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-400"
-            onClick={handleShowAllActors}
-          >
-            Ver todos
-          </button>
-        )}
+        <button
+          className="block mx-auto mt-5 px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-400"
+          onClick={handleShowAllActors}
+        >
+          Ver todos
+        </button>
       </div>
       <div className="container mx-auto my-5">
         <h2 className="text-xl font-bold mb-3">Trailer</h2>
@@ -229,8 +264,8 @@ const Serie = () => {
             recomendation.slice(0, 10).map((recommendation) => (
               <Link
                 key={recommendation.id}
-                href="/Peliculas/[id]"
-                as={`/Peliculas/${recommendation.id}`}
+                href="/Series/[id]"
+                as={`/Series/${recommendation.id}`}
               >
                 <div className="flex flex-col items-center">
                   <Image

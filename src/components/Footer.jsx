@@ -22,7 +22,9 @@ export default function Footer() {
           </li>
           <li>
             <Link
-              href="#"
+              href="https://www.themoviedb.org"
+              target="_blank"
+              rel="noreferrer"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               TMDB
@@ -34,6 +36,16 @@ export default function Footer() {
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               GitHub
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://www.justwatch.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+            >
+              JustWatch
             </Link>
           </li>
         </ul>

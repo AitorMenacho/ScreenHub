@@ -1,37 +1,28 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-
-import Persona from "../api/Persona";
+import Persona from "@/pages/api/Persona";
 
 const Peliculas = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { persona, peliculas, series, populares } = Persona(id);
+  const { persona, series } = Persona(id);
 
-  if (!persona || !peliculas || !series) return null;
+  if (!persona || !series) return null;
 
-  const fotoPeli =
-    peliculas.cast && peliculas.cast.length > 0
-      ? Math.floor(Math.random() * (peliculas.cast.length + 1))
+  const fotoSerie =
+    series.cast && series.cast.length > 0
+      ? Math.floor(Math.random() * (series.cast.length + 1))
       : 0;
-
-  const verTodasPeliculas = () => {
-    router.push(`/Persona/${id}/Peliculas`);
-  };
-
-  const verTodasSeries = () => {
-    router.push(`/Persona/${id}/Series`);
-  };
 
   return (
     <>
-      {peliculas.cast && peliculas.cast.length > 0 && (
+      {series.cast && series.cast.length > 0 && (
         <div
           className="relative bg-cover bg-center flex justify-center items-center bg-no-repeat bg-fixed bg-gray-900 bg-opacity-50 bg-blend-darken"
           style={{
-            backgroundImage: `url('https://image.tmdb.org/t/p/original${peliculas.cast[fotoPeli]?.backdrop_path}')`,
+            backgroundImage: `url('https://image.tmdb.org/t/p/original${series.cast[fotoSerie]?.backdrop_path}')`,
             height: "70vh",
             backgroundColor: "rgba(0,0,0,0.7)",
           }}
@@ -58,37 +49,6 @@ const Peliculas = () => {
         </div>
       )}
       <div className="container mx-auto my-5">
-        <h2 className="text-xl font-bold mb-3">Películas</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {peliculas.cast &&
-            peliculas.cast.slice(0, 10).map((pelis) => (
-              <Link
-                key={pelis.id}
-                href="/Peliculas/[id]"
-                as={`/Peliculas/${pelis.id}`}
-              >
-                <div className="flex flex-col items-center">
-                  <Image
-                    className="w-50 h-50 object-cover"
-                    src={`https://image.tmdb.org/t/p/original${pelis.poster_path}`}
-                    alt={pelis.title}
-                    width={200}
-                    height={200}
-                  />
-                  <p className="text-center font-semibold">{pelis.title}</p>
-                </div>
-              </Link>
-            ))}
-        </div>
-        <button
-          className="block mx-auto mt-5 px-4 py-2 text-stone-950 bg-yellow-500 rounded hover:bg-yellow-400"
-          onClick={verTodasPeliculas}
-        >
-          Ver todas
-        </button>
-      </div>
-
-      <div className="container mx-auto my-5">
         <h2 className="text-xl font-bold mb-3">Series</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {series.cast &&
@@ -111,12 +71,6 @@ const Peliculas = () => {
               </Link>
             ))}
         </div>
-        <button
-          className="block mx-auto mt-5 px-4 py-2 text-stone-950 bg-yellow-500 rounded hover:bg-yellow-400"
-          onClick={verTodasSeries}
-        >
-          Ver todas
-        </button>
       </div>
     </>
   );

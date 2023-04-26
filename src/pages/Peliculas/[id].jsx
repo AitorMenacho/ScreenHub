@@ -8,11 +8,11 @@ const Peliculas = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { movie, actors, trailer, recomendation, reviews } = Pelicula(id);
-  const [showAllActors, setShowAllActors] = useState(false);
+  const { movie, actors, trailer, recomendation, reviews, providers } =
+    Pelicula(id);
 
   const handleShowAllActors = () => {
-    setShowAllActors(true);
+    router.push(`/Peliculas/${id}/Actores`);
   };
 
   if (!movie) return null;
@@ -82,6 +82,29 @@ const Peliculas = () => {
         </div>
       </div>
       <div className="container mx-auto my-5">
+        <h2 className="text-xl font-bold mb-3">¿Donde verlo?</h2>
+        <p className="pb-2 mb-3">contenido sacado de JustWatch</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-10 gap-4">
+          {providers &&
+            providers.ES &&
+            providers.ES.flatrate.map((provider) => (
+              <div
+                key={provider.provider_id}
+                className="text-center flex flex-col items-center"
+              >
+                <Image
+                  className="rounded-full w-24 h-24 object-cover mb-3"
+                  src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                  alt={provider.provider_name}
+                  width={100}
+                  height={100}
+                />
+                <span className="font-bold">{provider.provider_name}</span>{" "}
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="container mx-auto my-5">
         <h2 className="text-xl font-bold mb-3">Actores</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {actors &&
@@ -105,14 +128,12 @@ const Peliculas = () => {
               </Link>
             ))}
         </div>
-        {!showAllActors && (
-          <button
-            className="block mx-auto mt-5 px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-400"
-            onClick={handleShowAllActors}
-          >
-            Ver todos
-          </button>
-        )}
+        <button
+          className="block mx-auto mt-5 px-4 py-2 text-stone-950 bg-yellow-500 rounded hover:bg-yellow-400"
+          onClick={handleShowAllActors}
+        >
+          Ver todos
+        </button>
       </div>
       <div className="container mx-auto my-5">
         <h2 className="text-xl font-bold mb-3">Trailer</h2>
@@ -147,7 +168,6 @@ const Peliculas = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6"
                     >
                       <path
                         strokeLinecap="round"
@@ -164,8 +184,8 @@ const Peliculas = () => {
                     <Image
                       src={`https://image.tmdb.org/t/p/original${company.logo_path}`}
                       alt={company.name}
-                      width={200}
-                      height={200}
+                      width={100}
+                      height={100}
                     />
                   )}
                   <p className="text-center font-semibold">{company.name}</p>
@@ -190,7 +210,7 @@ const Peliculas = () => {
                 </p>
               </div>
             ))}
-          {reviews.length === 0 && <p className="text-2xl">No hay reseñas</p>}
+          {!reviews && <p className="text-2xl">No hay reseñas</p>}
         </div>
       </div>
       <div className="container mx-auto my-5">
