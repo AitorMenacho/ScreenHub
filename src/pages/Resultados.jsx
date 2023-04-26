@@ -21,6 +21,10 @@ const Resultados = () => {
     page == 1 ? setPage(1) : setPage(page - 1);
   };
 
+  if (!movies) return null;
+
+  console.log(movies);
+
   return (
     <>
       <div className="bg-stone-950">
@@ -73,36 +77,107 @@ const Resultados = () => {
           </div>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {movies.map((movie) => (
-              <Link
-                key={movie.id}
-                href="/Peliculas/[id]"
-                as={`/Peliculas/${movie.id}`}
-                className="group"
-              >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                    className="h-full w-full object-cover object-center group-hover:opacity-75"
-                    width={500}
-                    height={750}
-                  />
-                </div>
-                <h3 className="mt-4 text-sm text-white">{movie.title}</h3>
-                <p
-                  className="mt-1 text-lg font-medium"
-                  style={{
-                    color:
-                      movie.vote_average < 5
-                        ? "red"
-                        : movie.vote_average < 7
-                        ? "orange"
-                        : "green",
-                  }}
-                >
-                  {movie.vote_average}
-                </p>
-              </Link>
+              <div key={movie.id}>
+                {movie.poster_path == null ? (
+                  <Link
+                    href="/Persona/[id]"
+                    as={`/Persona/${movie.id}`}
+                    className="group"
+                  >
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`}
+                        alt={movie.name}
+                        className="h-full w-full object-cover object-center group-hover:opacity-75"
+                        width={500}
+                        height={750}
+                      />
+                    </div>
+                    <h3 className="mt-4 text-sm text-white">
+                      {movie.title == null ? movie.name : movie.title}
+                    </h3>
+                    <p
+                      className="mt-1 text-lg font-medium"
+                      style={{
+                        color:
+                          movie.vote_average < 5
+                            ? "red"
+                            : movie.vote_average < 7
+                            ? "orange"
+                            : "green",
+                      }}
+                    >
+                      {movie.vote_average}
+                    </p>
+                  </Link>
+                ) : movie.media_type === "tv" ? (
+                  <Link
+                    key={movie.id}
+                    href="/Series/[id]"
+                    as={`/Series/${movie.id}`}
+                    className="group"
+                  >
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        className="h-full w-full object-cover object-center group-hover:opacity-75"
+                        width={500}
+                        height={750}
+                      />
+                    </div>
+                    <h3 className="mt-4 text-sm text-white">
+                      {movie.title == null ? movie.name : movie.title}
+                    </h3>
+                    <p
+                      className="mt-1 text-lg font-medium"
+                      style={{
+                        color:
+                          movie.vote_average < 5
+                            ? "red"
+                            : movie.vote_average < 7
+                            ? "orange"
+                            : "green",
+                      }}
+                    >
+                      {movie.vote_average}
+                    </p>
+                  </Link>
+                ) : (
+                  <Link
+                    key={movie.id}
+                    href="/Peliculas/[id]"
+                    as={`/Peliculas/${movie.id}`}
+                    className="group"
+                  >
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        className="h-full w-full object-cover object-center group-hover:opacity-75"
+                        width={500}
+                        height={750}
+                      />
+                    </div>
+                    <h3 className="mt-4 text-sm text-white">
+                      {movie.title == null ? movie.name : movie.title}
+                    </h3>
+                    <p
+                      className="mt-1 text-lg font-medium"
+                      style={{
+                        color:
+                          movie.vote_average < 5
+                            ? "red"
+                            : movie.vote_average < 7
+                            ? "orange"
+                            : "green",
+                      }}
+                    >
+                      {movie.vote_average}
+                    </p>
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
           <div className="flex items-center justify-between border-t border-yellow-500 px-4 py-3 sm:px-6 mt-5">

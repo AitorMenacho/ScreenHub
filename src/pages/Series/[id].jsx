@@ -1,28 +1,30 @@
 import { useRouter } from "next/router";
-import Pelicula from "../api/Pelicula";
 import Image from "next/image";
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
+import Series from "../api/Series";
 
 const Peliculas = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { movie, actors, trailer, recomendation, reviews } = Pelicula(id);
+  const { tvShow, actors, trailer, recomendation, reviews } = Series(id);
   const [showAllActors, setShowAllActors] = useState(false);
 
   const handleShowAllActors = () => {
     setShowAllActors(true);
   };
 
-  if (!movie) return null;
+  if (!tvShow) return null;
+
+  console.log(tvShow);
 
   return (
     <>
       <div
         className="relative bg-cover bg-center flex justify-center items-center bg-no-repeat bg-fixed bg-gray-900 bg-opacity-50 bg-blend-darken"
         style={{
-          backgroundImage: `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`,
+          backgroundImage: `url('https://image.tmdb.org/t/p/original${tvShow.backdrop_path}')`,
           height: "70vh",
           backgroundColor: "rgba(0,0,0,0.7)",
         }}
@@ -31,29 +33,30 @@ const Peliculas = () => {
           <div className="col-span-2">
             <Image
               className="rounded-lg"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
+              src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
+              alt={tvShow.title}
               width={300}
               height={450}
             />
           </div>
           <div className="col-span-1">
-            <h1 className="text-3xl font-bold text-white">{movie.title}</h1>
+            <h1 className="text-3xl font-bold text-white">{tvShow.name}</h1>
             <div className="bg-yellow-500 text-stone-950 py-2 px-4 rounded-lg my-2">
-              <h3 className="text-2xl font-bold">{movie.tagline}</h3>
+              <h3 className="text-2xl font-bold">{tvShow.tagline}</h3>
             </div>
-            <p className="text-white">{movie.overview}</p>
+            <p className="text-white">{tvShow.overview}</p>
             <p className="text-white my-1">
               <span className="font-bold">Fecha de estreno:</span>{" "}
-              {movie.release_date}
+              {tvShow.first_air_date}
             </p>
             <p className="text-white my-1">
-              <span className="font-bold">Duración:</span> {movie.runtime} min
+              <span className="font-bold">Temporadas:</span>{" "}
+              {tvShow.number_of_seasons}
             </p>
             <p className="font-bold mt-5 mb-2">Género</p>
             <p className="text-white">
-              {movie.genres &&
-                movie.genres.map((genre) => (
+              {tvShow.genres &&
+                tvShow.genres.map((genre) => (
                   <span
                     key={genre.id}
                     className="inline-block rounded-full px-3 py-1 text-sm font-semibold bg-yellow-500 text-stone-950 mr-2"
@@ -67,7 +70,7 @@ const Peliculas = () => {
                 <svg
                   key={index}
                   className={`h-6 w-6 fill-current ${
-                    index < Math.round(movie.vote_average / 2)
+                    index < Math.round(tvShow.vote_average / 2)
                       ? "text-yellow-400"
                       : "text-gray-400"
                   }`}
@@ -79,6 +82,28 @@ const Peliculas = () => {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+      <div className="container mx-auto my-5">
+        <h2 className="text-xl font-bold mb-3">Temporadas</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {tvShow.seasons &&
+            tvShow.seasons.map((season) => (
+              <Link
+                key={season.id}
+              >
+                <div className="flex flex-col items-center">
+                  <Image
+                    className="w-50 h-50 object-cover"
+                    src={`https://image.tmdb.org/t/p/original${season.poster_path}`}
+                    alt={season.name}
+                    width={200}
+                    height={200}
+                  />
+                  <p className="text-center font-semibold">{season.name}</p>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
       <div className="container mx-auto my-5">
@@ -122,7 +147,7 @@ const Peliculas = () => {
               className="w-full"
               height="500"
               src={`https://www.youtube.com/embed/${trailer.key}`}
-              title={movie.title}
+              title={tvShow.title}
               allowFullScreen
             ></iframe>
           )}
@@ -132,8 +157,8 @@ const Peliculas = () => {
       <div className="container mx-auto my-5">
         <h2 className="text-xl font-bold mb-3">Productoras</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
-          {movie.production_companies &&
-            movie.production_companies.map((company) => (
+          {tvShow.production_companies &&
+            tvShow.production_companies.map((company) => (
               <Link
                 key={company.id}
                 href="/company/[id]"
@@ -172,7 +197,9 @@ const Peliculas = () => {
                 </div>
               </Link>
             ))}
-          {!movie.production_companies && <p className="text-2xl">Sin datos</p>}
+          {!tvShow.production_companies && (
+            <p className="text-2xl">Sin datos</p>
+          )}
         </div>
       </div>
       <div className="container mx-auto my-5">
@@ -194,9 +221,7 @@ const Peliculas = () => {
         </div>
       </div>
       <div className="container mx-auto my-5">
-        <h2 className="text-xl font-bold mb-3">
-          Si te ha gustado esta película
-        </h2>
+        <h2 className="text-xl font-bold mb-3">Si te ha gustado esta serie</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {recomendation &&
             recomendation.slice(0, 10).map((recommendation) => (
@@ -209,12 +234,12 @@ const Peliculas = () => {
                   <Image
                     className="w-50 h-50 object-cover"
                     src={`https://image.tmdb.org/t/p/original${recommendation.poster_path}`}
-                    alt={recommendation.title}
+                    alt={recommendation.name}
                     width={200}
                     height={200}
                   />
                   <p className="text-center font-semibold">
-                    {recommendation.title}
+                    {recommendation.name}
                   </p>
                 </div>
               </Link>

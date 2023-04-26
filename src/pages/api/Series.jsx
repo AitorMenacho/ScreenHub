@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 
-const Pelicula = (idPelicula) => {
-  const [movie, setMovie] = useState([]);
+const Series = (idSerie) => {
+  const [tvShow, SetTvShow] = useState([]);
   const [actors, setActors] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    const getMovie = async () => {
+    const getTvShow = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idPelicula}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
+        `https://api.themoviedb.org/3/tv/${idSerie}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
       );
       const data = await response.json();
-      setMovie(data);
+      SetTvShow(data);
     };
 
     const getActors = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idPelicula}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
+        `https://api.themoviedb.org/3/tv/${idSerie}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
       );
       const data = await response.json();
       setActors(data.cast);
@@ -26,7 +26,7 @@ const Pelicula = (idPelicula) => {
 
     const getTrailer = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idPelicula}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
+        `https://api.themoviedb.org/3/tv/${idSerie}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
       );
 
       const data = await response.json();
@@ -35,7 +35,7 @@ const Pelicula = (idPelicula) => {
 
     const getRecomendation = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idPelicula}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
+        `https://api.themoviedb.org/3/tv/${idSerie}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
       );
 
       const data = await response.json();
@@ -44,7 +44,7 @@ const Pelicula = (idPelicula) => {
 
     const getReviews = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idPelicula}/reviews?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
+        `https://api.themoviedb.org/3/tv/${idSerie}/reviews?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
       );
 
       const data = await response.json();
@@ -55,10 +55,10 @@ const Pelicula = (idPelicula) => {
     getRecomendation();
     getTrailer();
     getActors();
-    getMovie();
-  }, [idPelicula]);
+    getTvShow();
+  }, [idSerie]);
 
-  return { movie, actors, trailer, recomendation, reviews };
+  return { tvShow, actors, trailer, recomendation, reviews };
 };
 
-export default Pelicula;
+export default Series;
