@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 
 const Temporada = (idSerie, idTemporada) => {
   const [temporada, SetTemporada] = useState([]);
-  const [actors, setActors] = useState([]);
-  const [trailer, setTrailer] = useState([]);
+  const [imagenes, setImagenes] = useState([]);
 
   useEffect(() => {
     const getTemporada = async () => {
@@ -14,29 +13,20 @@ const Temporada = (idSerie, idTemporada) => {
       SetTemporada(data);
     };
 
-    const getActors = async () => {
+    const getImagenes = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${idSerie}/season/${idTemporada}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
+        `https://api.themoviedb.org/3/tv/${idSerie}/season/${idTemporada}/images?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
       );
+
       const data = await response.json();
-      setActors(data.cast);
+      setImagenes(data.posters);
     };
 
-    // const getTrailer = async () => {
-    //   const response = await fetch(
-    //     `https://api.themoviedb.org/3/tv/${idSerie}/season/${temporada}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
-    //   );
-
-    //   const data = await response.json();
-    //   setTrailer(data.results[0]);
-    // };
-
-    // getTrailer();
-    getActors();
+    getImagenes();
     getTemporada();
   }, [idSerie]);
 
-  return { temporada, actors, trailer };
+  return { temporada, imagenes };
 };
 
 export default Temporada;
