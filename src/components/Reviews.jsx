@@ -7,7 +7,7 @@ export default function Reviews({ reviews }) {
           reviews.slice(0, 6).map((review) => (
             <div
               key={review.id}
-              className="bg-gray-900 bg-opacity-50 bg-blend-darken rounded-lg p-4"
+              className="bg-stone-800 bg-blend-darken rounded-lg p-4"
             >
               <p className="text-white">{review.content}</p>
               <p className="text-white mt-3">

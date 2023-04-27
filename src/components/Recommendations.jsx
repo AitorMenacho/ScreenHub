@@ -9,7 +9,7 @@ export default function Recommendations({ recomendation, tipo }) {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {recomendation &&
-          recomendation.slice(0, 20).map((recommendation) => (
+          recomendation.slice(0, 10).map((recommendation) => (
             <Link
               key={recommendation.id}
               href={`/${tipo}/[id]`}

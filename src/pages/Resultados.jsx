@@ -91,22 +91,6 @@ const Resultados = () => {
                         height={750}
                       />
                     </div>
-                    <h3 className="mt-4 text-sm text-white">
-                      {movie.title == null ? movie.name : movie.title}
-                    </h3>
-                    <p
-                      className="mt-1 text-lg font-medium"
-                      style={{
-                        color:
-                          movie.vote_average < 5
-                            ? "red"
-                            : movie.vote_average < 7
-                            ? "orange"
-                            : "green",
-                      }}
-                    >
-                      {movie.vote_average}
-                    </p>
                   </Link>
                 ) : movie.media_type === "tv" ? (
                   <Link
@@ -115,31 +99,32 @@ const Resultados = () => {
                     as={`/Series/${movie.id}`}
                     className="group"
                   >
-                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        alt={movie.title}
-                        className="h-full w-full object-cover object-center group-hover:opacity-75"
-                        width={500}
-                        height={750}
-                      />
+                    <div className="relative">
+                      <p
+                        className="absolute text-white font-bold text-xl bg-stone-950 rounded-full p-2"
+                        style={{
+                          color:
+                            movie.vote_average < 5
+                              ? "red"
+                              : movie.vote_average < 7
+                              ? "orange"
+                              : "green",
+                          top: "-10px",
+                          left: "-10px",
+                        }}
+                      >
+                        {(Math.round(movie.vote_average * 10) / 10).toFixed(1)}
+                      </p>
+                      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                          alt={movie.title}
+                          className="h-full w-full object-cover object-center"
+                          width={500}
+                          height={750}
+                        />
+                      </div>
                     </div>
-                    <h3 className="mt-4 text-sm text-white">
-                      {movie.title == null ? movie.name : movie.title}
-                    </h3>
-                    <p
-                      className="mt-1 text-lg font-medium"
-                      style={{
-                        color:
-                          movie.vote_average < 5
-                            ? "red"
-                            : movie.vote_average < 7
-                            ? "orange"
-                            : "green",
-                      }}
-                    >
-                      {movie.vote_average}
-                    </p>
                   </Link>
                 ) : (
                   <Link
@@ -148,31 +133,33 @@ const Resultados = () => {
                     as={`/Peliculas/${movie.id}`}
                     className="group"
                   >
-                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        alt={movie.title}
-                        className="h-full w-full object-cover object-center group-hover:opacity-75"
-                        width={500}
-                        height={750}
-                      />
+                    <div className="relative">
+                      <p
+                        className="absolute z-10 text-white font-bold text-xl bg-stone-950 rounded-full p-2"
+                        style={{
+                          color:
+                            movie.vote_average < 5
+                              ? "red"
+                              : movie.vote_average < 7
+                              ? "orange"
+                              : "green",
+                          top: "-10px",
+                          left: "-10px",
+                        }}
+                      >
+                        {(Math.round(movie.vote_average * 10) / 10).toFixed(1)}
+                      </p>
+
+                      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                          alt={movie.title}
+                          className="h-full w-full object-cover object-center"
+                          width={500}
+                          height={750}
+                        />
+                      </div>
                     </div>
-                    <h3 className="mt-4 text-sm text-white">
-                      {movie.title == null ? movie.name : movie.title}
-                    </h3>
-                    <p
-                      className="mt-1 text-lg font-medium"
-                      style={{
-                        color:
-                          movie.vote_average < 5
-                            ? "red"
-                            : movie.vote_average < 7
-                            ? "orange"
-                            : "green",
-                      }}
-                    >
-                      {movie.vote_average}
-                    </p>
                   </Link>
                 )}
               </div>
