@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog, Disclosure, Popover } from "@headlessui/react";
+import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import logo from "../../public/logo.svg";

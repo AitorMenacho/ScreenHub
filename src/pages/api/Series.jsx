@@ -6,6 +6,7 @@ const Series = (idSerie) => {
   const [trailer, setTrailer] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [providers, setProviders] = useState([]);
 
   useEffect(() => {
     const getTvShow = async () => {
@@ -51,6 +52,16 @@ const Series = (idSerie) => {
       setReviews(data.results);
     };
 
+    const getProviders = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/tv/${idSerie}/watch/providers?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
+      );
+
+      const data = await response.json();
+      setProviders(data.results);
+    };
+
+    getProviders();
     getReviews();
     getRecomendation();
     getTrailer();
@@ -58,7 +69,7 @@ const Series = (idSerie) => {
     getTvShow();
   }, [idSerie]);
 
-  return { tvShow, actors, trailer, recomendation, reviews };
+  return { tvShow, actors, trailer, recomendation, reviews, providers };
 };
 
 export default Series;

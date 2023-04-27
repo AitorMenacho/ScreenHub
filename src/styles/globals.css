@@ -19,3 +19,15 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
 }
+
+.loader {
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  animation: loader 1.5s linear infinite;
+}
+
+@keyframes loader {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -9,6 +9,7 @@ const Pelicula = (idPelicula) => {
   const [providers, setProviders] = useState([]);
 
   useEffect(() => {
+    // Esta petición trae la información de la película
     const getMovie = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idPelicula}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
@@ -17,6 +18,7 @@ const Pelicula = (idPelicula) => {
       setMovie(data);
     };
 
+    // Esta petición trae la información de los actores
     const getActors = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idPelicula}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
@@ -25,15 +27,17 @@ const Pelicula = (idPelicula) => {
       setActors(data.cast);
     };
 
+    // Esta petición trae la información del trailer
     const getTrailer = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idPelicula}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
       );
 
       const data = await response.json();
-      setTrailer(data.results[0]);
+      setTrailer(data.results);
     };
 
+    // Esta petición trae la información de las recomendaciones
     const getRecomendation = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idPelicula}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
@@ -43,6 +47,7 @@ const Pelicula = (idPelicula) => {
       setRecomendation(data.results);
     };
 
+    // Esta petición trae la información de las reviews
     const getReviews = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idPelicula}/reviews?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
@@ -52,6 +57,7 @@ const Pelicula = (idPelicula) => {
       setReviews(data.results);
     };
 
+    // Esta petición trae la información de los proveedores
     const getProviders = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${idPelicula}/watch/providers?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`

@@ -23,8 +23,6 @@ const Resultados = () => {
 
   if (!movies) return null;
 
-  console.log(movies);
-
   return (
     <>
       <div className="bg-stone-950">
