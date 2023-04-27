@@ -24,7 +24,7 @@ const Temporada = (idSerie, idTemporada) => {
 
     getImagenes();
     getTemporada();
-  }, [idSerie]);
+  }, [idSerie, idTemporada]);
 
   return { temporada, imagenes };
 };
