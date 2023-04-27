@@ -9,7 +9,6 @@ import Reviews from "@/components/Reviews";
 import Recommendations from "@/components/Recommendations";
 
 import Pelicula from "../api/Pelicula";
-import { useEffect, useState } from "react";
 
 const Peliculas = () => {
   const router = useRouter();
@@ -19,19 +18,6 @@ const Peliculas = () => {
     Pelicula(id);
 
   if (!movie) return null;
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Se lanza al cargar la página y se cierra el loader cuando se termina de cargar la página (cuando se terminan de cargar todas las peticiones)
-  // (se ejecuta una vez) (se ejecuta después del renderizado)
-  // Dura 2 más después del renderizado
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-
-  console.log(isLoading);
 
   return (
     <>
