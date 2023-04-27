@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 import Providers from "@/components/Providers";
-import Temporadas from "@/components/series/temporadas";
 import Actors from "@/components/Actors";
 import Trailer from "@/components/Trailer";
 import Productoras from "@/components/Productoras";
@@ -10,6 +9,7 @@ import Reviews from "@/components/Reviews";
 import Recommendations from "@/components/Recommendations";
 
 import Series from "../api/Series";
+import Temporadas from "@/components/series/Temporadas";
 
 const Serie = () => {
   const router = useRouter();
