@@ -50,13 +50,21 @@ export default function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <Link href="/Peliculas/Listas" as={`/Peliculas/Listas`} className="text-sm font-semibold leading-6 text-white">
+          <Link
+            href="/Peliculas/Listas"
+            as={`/Peliculas/Listas`}
+            className="text-sm font-semibold leading-6 text-white"
+          >
             Películas
           </Link>
-          <Link href="/Series/Listas" as={`/Series/Listas`} className="text-sm font-semibold leading-6 text-white">
+          <Link
+            href="/Series/Listas"
+            as={`/Series/Listas`}
+            className="text-sm font-semibold leading-6 text-white"
+          >
             Series
           </Link>
-          <Link href="#" className="text-sm font-semibold leading-6 text-white">
+          <Link href="/Recomendador/opciones" className="text-sm font-semibold leading-6 text-white">
             Recomendador
           </Link>
         </Popover.Group>
