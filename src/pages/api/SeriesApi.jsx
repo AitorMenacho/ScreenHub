@@ -11,7 +11,7 @@ const SeriesApi = () => {
     //Petición que me devuelve las series mejor valoradas
     const getMejorValoradas = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
+        `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1&region=ES`
       );
       const data = await response.json();
       setMejorValoradas(data.results);
@@ -20,7 +20,7 @@ const SeriesApi = () => {
     //Petición que me devuelve las series populares
     const getPopulares = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
+        `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1&region=ES`
       );
       const data = await response.json();
       setPopulares(data.results);
@@ -29,7 +29,7 @@ const SeriesApi = () => {
     //Petición que me devuelve las series que se estrenarán próximamente
     const getProximosEstrenos = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
+        `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1&region=ES`
       );
       const data = await response.json();
       setProximosEstrenos(data.results);
@@ -38,7 +38,7 @@ const SeriesApi = () => {
     //Petición que me devuelve las series que están en cartelera
     const getEmision = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1`
+        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1&region=ES`
       );
       const data = await response.json();
       setEnEmision(data.results);
@@ -47,7 +47,7 @@ const SeriesApi = () => {
     //Petición que me devuelve las series que están en tendencia
     const getTendencia = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+        `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1&region=ES`
       );
       const data = await response.json();
       setTendencia(data.results);
