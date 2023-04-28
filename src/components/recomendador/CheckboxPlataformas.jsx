@@ -1,4 +1,12 @@
-export default function Checkbox({ name, label, checked, onChange, value }) {
+import Image from "next/image";
+
+export default function CheckboxPlatforma({
+  name,
+  imagen,
+  checked,
+  onChange,
+  value,
+}) {
   return (
     <label
       htmlFor={name}
@@ -9,13 +17,19 @@ export default function Checkbox({ name, label, checked, onChange, value }) {
       <input
         id={name}
         name={name}
+        value={value}
         type="checkbox"
         className="hidden"
         checked={checked}
         onChange={onChange}
-        value={value}
       />
-      <span className="text-stone-950">{label}</span>
+      <Image
+        src={`https://image.tmdb.org/t/p/w500${imagen}`}
+        alt={name}
+        width={50}
+        height={50}
+        className="inline-block"
+      />
     </label>
   );
 }
