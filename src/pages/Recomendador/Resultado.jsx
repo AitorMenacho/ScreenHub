@@ -11,12 +11,10 @@ export default function Resultado() {
 
   const [page, setPage] = useState(1);
 
-  const generosFormateados = Array.isArray(genero) ? genero.join(",") : "";
+  const generosFormateados = Array.isArray(genero) ? genero.join(",") : genero;
 
   const valoracionNumerica =
     valoracion === "calidad" ? 7 : valoracion === "normal" ? 5 : 0;
-
-    console.log(plataforma)
 
   const { resultado, pages, results } = FiltradoRecomendacion(
     generosFormateados,

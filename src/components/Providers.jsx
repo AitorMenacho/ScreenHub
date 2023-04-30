@@ -7,6 +7,7 @@ export default function Providers({ providers }) {
       <p className="pb-2 mb-3">contenido sacado de JustWatch</p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-10 gap-4">
         {providers &&
+          providers.flatrate &&
           providers.flatrate.map((provider) => (
             <div
               key={provider.provider_id}

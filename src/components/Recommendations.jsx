@@ -22,6 +22,7 @@ export default function Recommendations({ recomendation, tipo }) {
                   alt={recommendation.name}
                   width={200}
                   height={200}
+                  style={{ width: "auto", height: "auto" }}
                 />
                 {tipo === "Peliculas" ? (
                   <p className="text-center font-semibold">

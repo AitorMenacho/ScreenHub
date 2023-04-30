@@ -15,7 +15,7 @@ export default function Reviews({ reviews }) {
               </p>
             </div>
           ))}
-        {reviews.length === 0 && <p className="text-2xl">No hay reseñas</p>}
+        {reviews && reviews.length === 0 && <p className="text-2xl">No hay reseñas</p>}
       </div>
     </div>
   );

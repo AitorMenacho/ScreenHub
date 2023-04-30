@@ -26,6 +26,7 @@ const Peliculas = () => {
         style={{
           backgroundImage: `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`,
           height: "70vh",
+          width: "100%",
           backgroundColor: "rgba(0,0,0,0.7)",
         }}
       >
@@ -37,6 +38,7 @@ const Peliculas = () => {
               alt={movie.title}
               width={300}
               height={450}
+              style={{ objectFit: "cover" }}
             />
           </div>
           <div className="col-span-1">
@@ -84,7 +86,7 @@ const Peliculas = () => {
         </div>
       </div>
       <Providers providers={providers.ES} />
-      <Actors actors={actors} />
+      <Actors actors={actors} idSerie={id} tipo={"Peliculas"} />
       <Trailer trailer={trailer} />
       <Productoras productoras={movie.production_companies} />
       <Reviews reviews={reviews} />

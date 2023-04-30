@@ -64,7 +64,10 @@ export default function Header() {
           >
             Series
           </Link>
-          <Link href="/Recomendador/opciones" className="text-sm font-semibold leading-6 text-white">
+          <Link
+            href="/Recomendador/opciones"
+            className="text-sm font-semibold leading-6 text-white"
+          >
             Recomendador
           </Link>
         </Popover.Group>
@@ -91,7 +94,10 @@ export default function Header() {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="#" className="text-sm font-semibold leading-6 text-white">
+          <Link
+            href="/InicioSesion"
+            className="text-sm font-semibold leading-6 text-white"
+          >
             Iniciar sesión <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>

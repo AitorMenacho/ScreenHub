@@ -38,6 +38,7 @@ const Serie = () => {
               alt={tvShow.title}
               width={300}
               height={450}
+              style={{ objectFit: "cover" }}
             />
             <div
               className="py-2 flex items-center font-bold justify-center bg-stone-950 rounded-b-lg"
@@ -128,7 +129,7 @@ const Serie = () => {
       </div>
       <Providers providers={providers.ES} />
       <Temporadas temporada={tvShow.seasons} idSerie={id} />
-      <Actors actors={actors} idSerie={id} />
+      <Actors actors={actors} idSerie={id} tipo={"Series"} />
       <Trailer trailer={trailer} />
       <Productoras productoras={tvShow.production_companies} />
       <Reviews reviews={reviews} />

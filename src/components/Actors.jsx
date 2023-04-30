@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Actors({ actors, idSerie }) {
+export default function Actors({ actors, idSerie, tipo }) {
   const router = useRouter();
 
   const handleShowAllActors = () => {
-    router.push(`/Series/${idSerie}/Actores`);
+    router.push(`/${tipo}/${idSerie}/Actores`);
   };
 
   return (
@@ -27,6 +27,7 @@ export default function Actors({ actors, idSerie }) {
                   alt={actor.name}
                   width={100}
                   height={100}
+                  style={{ width: "100px", height: "100px" }}
                 />
                 <p className="text-center font-semibold">{actor.name}</p>
                 <p className="text-center text-sm">{actor.character}</p>

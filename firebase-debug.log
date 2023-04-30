@@ -1,0 +1,233 @@
+[debug] [2023-04-30T22:12:32.389Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T22:12:32.391Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-04-30T22:12:32.392Z] CLI Version:   11.29.1
+[debug] [2023-04-30T22:12:32.392Z] Platform:      win32
+[debug] [2023-04-30T22:12:32.392Z] Node Version:  v16.15.0
+[debug] [2023-04-30T22:12:32.393Z] Time:          Mon May 01 2023 00:12:32 GMT+0200 (hora de verano de Europa central)
+[debug] [2023-04-30T22:12:32.393Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T22:12:32.397Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-04-30T22:12:32.489Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T22:12:32.489Z] > authorizing via signed-in user (menacho.aitor@gmail.com)
+[debug] [2023-04-30T22:12:32.490Z] [iam] checking project screenhub-e68df for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-04-30T22:12:32.491Z] > refreshing access token with scopes: []
+[debug] [2023-04-30T22:12:32.491Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-04-30T22:12:32.492Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-30T22:12:32.626Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-04-30T22:12:32.626Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-04-30T22:12:32.632Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions [none]
+[debug] [2023-04-30T22:12:32.632Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions x-goog-quota-user=projects/screenhub-e68df
+[debug] [2023-04-30T22:12:32.633Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:12:32.736Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-04-30T22:12:32.736Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-04-30T22:12:33.280Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions 200
+[debug] [2023-04-30T22:12:33.280Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:12:33.281Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df [none]
+[debug] [2023-04-30T22:12:33.538Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df 200
+[debug] [2023-04-30T22:12:33.538Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df {"projectId":"screenhub-e68df","projectNumber":"841794359724","displayName":"ScreenHub","name":"projects/screenhub-e68df","resources":{"hostingSite":"screenhub-e68df","realtimeDatabaseInstance":"screenhub-e68df-default-rtdb","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_a6d08a39-2ee8-41c4-a8e4-a60bddcdc289"}
+[debug] [2023-04-30T22:12:38.992Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites pageToken=&pageSize=10
+[debug] [2023-04-30T22:12:39.857Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites 200
+[debug] [2023-04-30T22:12:39.857Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites {"sites":[{"name":"projects/screenhub-e68df/sites/screenhub-e68df","defaultUrl":"https://screenhub-e68df.web.app","appId":"1:841794359724:web:7a31506db61971ae07ea09","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-30T22:12:39.858Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config [none]
+[debug] [2023-04-30T22:12:40.842Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config 200
+[debug] [2023-04-30T22:12:40.842Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config {"projectId":"screenhub-e68df","appId":"1:841794359724:web:7a31506db61971ae07ea09","databaseURL":"https://screenhub-e68df-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2","apiKey":"AIzaSyAg4WnxKjEPtjtnKCGry1m7WI_taCR6D98","authDomain":"screenhub-e68df.firebaseapp.com","messagingSenderId":"841794359724","measurementId":"G-9SG8Z6WLP6"}
+[debug] [2023-04-30T22:12:55.517Z] Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\imagemin-mozjpeg\index.js from C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js not supported.
+Instead change the require of index.js in C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js to a dynamic import() which is available in all CommonJS modules.
+    at requireImageminPlugin (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:21:10)
+    at getImgLoaderOptions (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:42:11)
+    at applyImgLoader (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:96:28)
+    at appendLoaders (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\index.js:137:14)
+    at Object.webpack (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\index.js:62:24)
+    at getBaseWebpackConfig (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-config.js:1992:32)
+    at async Promise.all (index 0)
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async webpackBuildImpl (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\impl.js:129:21)
+    at async webpackBuild (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\index.js:137:16)
+    at async C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:531:119
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async build (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:143:29)
+    at async build (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:55:5)
+    at async prepareFrameworks (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:286:108)
+    at async deploy (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-04-30T22:13:04.709Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T22:13:04.711Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-04-30T22:13:04.712Z] CLI Version:   11.29.1
+[debug] [2023-04-30T22:13:04.712Z] Platform:      win32
+[debug] [2023-04-30T22:13:04.712Z] Node Version:  v16.15.0
+[debug] [2023-04-30T22:13:04.713Z] Time:          Mon May 01 2023 00:13:04 GMT+0200 (hora de verano de Europa central)
+[debug] [2023-04-30T22:13:04.713Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T22:13:04.791Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T22:13:04.791Z] > authorizing via signed-in user (menacho.aitor@gmail.com)
+[debug] [2023-04-30T22:13:04.791Z] [iam] checking project screenhub-e68df for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-04-30T22:13:04.794Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions [none]
+[debug] [2023-04-30T22:13:04.794Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions x-goog-quota-user=projects/screenhub-e68df
+[debug] [2023-04-30T22:13:04.794Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:13:05.455Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions 200
+[debug] [2023-04-30T22:13:05.455Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:13:05.456Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df [none]
+[debug] [2023-04-30T22:13:05.703Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df 200
+[debug] [2023-04-30T22:13:05.704Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df {"projectId":"screenhub-e68df","projectNumber":"841794359724","displayName":"ScreenHub","name":"projects/screenhub-e68df","resources":{"hostingSite":"screenhub-e68df","realtimeDatabaseInstance":"screenhub-e68df-default-rtdb","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_a6d08a39-2ee8-41c4-a8e4-a60bddcdc289"}
+[debug] [2023-04-30T22:13:10.704Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites pageToken=&pageSize=10
+[debug] [2023-04-30T22:13:11.538Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites 200
+[debug] [2023-04-30T22:13:11.538Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites {"sites":[{"name":"projects/screenhub-e68df/sites/screenhub-e68df","defaultUrl":"https://screenhub-e68df.web.app","appId":"1:841794359724:web:7a31506db61971ae07ea09","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-30T22:13:11.539Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config [none]
+[debug] [2023-04-30T22:13:12.503Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config 200
+[debug] [2023-04-30T22:13:12.503Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config {"projectId":"screenhub-e68df","appId":"1:841794359724:web:7a31506db61971ae07ea09","databaseURL":"https://screenhub-e68df-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2","apiKey":"AIzaSyAg4WnxKjEPtjtnKCGry1m7WI_taCR6D98","authDomain":"screenhub-e68df.firebaseapp.com","messagingSenderId":"841794359724","measurementId":"G-9SG8Z6WLP6"}
+[debug] [2023-04-30T22:13:26.399Z] Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\imagemin-mozjpeg\index.js from C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js not supported.
+Instead change the require of index.js in C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js to a dynamic import() which is available in all CommonJS modules.
+    at requireImageminPlugin (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:21:10)
+    at getImgLoaderOptions (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:42:11)
+    at applyImgLoader (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:96:28)
+    at appendLoaders (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\index.js:137:14)
+    at Object.webpack (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\index.js:62:24)
+    at getBaseWebpackConfig (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-config.js:1992:32)
+    at async Promise.all (index 2)
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async webpackBuildImpl (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\impl.js:129:21)
+    at async webpackBuild (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\index.js:137:16)
+    at async C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:531:119
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async build (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:143:29)
+    at async build (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:55:5)
+    at async prepareFrameworks (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:286:108)
+    at async deploy (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-04-30T22:24:41.781Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T22:24:41.783Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-04-30T22:24:41.784Z] CLI Version:   11.29.1
+[debug] [2023-04-30T22:24:41.784Z] Platform:      win32
+[debug] [2023-04-30T22:24:41.784Z] Node Version:  v16.15.0
+[debug] [2023-04-30T22:24:41.785Z] Time:          Mon May 01 2023 00:24:41 GMT+0200 (hora de verano de Europa central)
+[debug] [2023-04-30T22:24:41.785Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T22:24:41.864Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T22:24:41.864Z] > authorizing via signed-in user (menacho.aitor@gmail.com)
+[debug] [2023-04-30T22:24:41.864Z] [iam] checking project screenhub-e68df for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-04-30T22:24:41.867Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions [none]
+[debug] [2023-04-30T22:24:41.867Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions x-goog-quota-user=projects/screenhub-e68df
+[debug] [2023-04-30T22:24:41.867Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:24:42.555Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions 200
+[debug] [2023-04-30T22:24:42.555Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:24:42.556Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df [none]
+[debug] [2023-04-30T22:24:42.818Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df 200
+[debug] [2023-04-30T22:24:42.818Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df {"projectId":"screenhub-e68df","projectNumber":"841794359724","displayName":"ScreenHub","name":"projects/screenhub-e68df","resources":{"hostingSite":"screenhub-e68df","realtimeDatabaseInstance":"screenhub-e68df-default-rtdb","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_a6d08a39-2ee8-41c4-a8e4-a60bddcdc289"}
+[debug] [2023-04-30T22:24:47.995Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites pageToken=&pageSize=10
+[debug] [2023-04-30T22:24:48.903Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites 200
+[debug] [2023-04-30T22:24:48.903Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites {"sites":[{"name":"projects/screenhub-e68df/sites/screenhub-e68df","defaultUrl":"https://screenhub-e68df.web.app","appId":"1:841794359724:web:7a31506db61971ae07ea09","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-30T22:24:48.903Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config [none]
+[debug] [2023-04-30T22:24:49.642Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config 200
+[debug] [2023-04-30T22:24:49.642Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config {"projectId":"screenhub-e68df","appId":"1:841794359724:web:7a31506db61971ae07ea09","databaseURL":"https://screenhub-e68df-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2","apiKey":"AIzaSyAg4WnxKjEPtjtnKCGry1m7WI_taCR6D98","authDomain":"screenhub-e68df.firebaseapp.com","messagingSenderId":"841794359724","measurementId":"G-9SG8Z6WLP6"}
+[debug] [2023-04-30T22:25:03.641Z] Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\imagemin-mozjpeg\index.js from C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js not supported.
+Instead change the require of index.js in C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js to a dynamic import() which is available in all CommonJS modules.
+    at requireImageminPlugin (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:21:10)
+    at getImgLoaderOptions (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:42:11)
+    at applyImgLoader (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:96:28)
+    at appendLoaders (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\index.js:137:14)
+    at Object.webpack (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\index.js:62:24)
+    at getBaseWebpackConfig (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-config.js:1992:32)
+    at async Promise.all (index 1)
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async webpackBuildImpl (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\impl.js:129:21)
+    at async webpackBuild (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\index.js:137:16)
+    at async C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:531:119
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async build (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:143:29)
+    at async build (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:55:5)
+    at async prepareFrameworks (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:286:108)
+    at async deploy (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-04-30T22:46:35.108Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T22:46:35.110Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-04-30T22:46:35.111Z] CLI Version:   11.29.1
+[debug] [2023-04-30T22:46:35.111Z] Platform:      win32
+[debug] [2023-04-30T22:46:35.111Z] Node Version:  v16.15.0
+[debug] [2023-04-30T22:46:35.112Z] Time:          Mon May 01 2023 00:46:35 GMT+0200 (hora de verano de Europa central)
+[debug] [2023-04-30T22:46:35.112Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T22:46:35.191Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T22:46:35.191Z] > authorizing via signed-in user (menacho.aitor@gmail.com)
+[debug] [2023-04-30T22:46:35.191Z] [iam] checking project screenhub-e68df for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-04-30T22:46:35.194Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions [none]
+[debug] [2023-04-30T22:46:35.194Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions x-goog-quota-user=projects/screenhub-e68df
+[debug] [2023-04-30T22:46:35.194Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:46:35.878Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions 200
+[debug] [2023-04-30T22:46:35.878Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:46:35.879Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df [none]
+[debug] [2023-04-30T22:46:36.126Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df 200
+[debug] [2023-04-30T22:46:36.126Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df {"projectId":"screenhub-e68df","projectNumber":"841794359724","displayName":"ScreenHub","name":"projects/screenhub-e68df","resources":{"hostingSite":"screenhub-e68df","realtimeDatabaseInstance":"screenhub-e68df-default-rtdb","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_a6d08a39-2ee8-41c4-a8e4-a60bddcdc289"}
+[debug] [2023-04-30T22:46:41.189Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites pageToken=&pageSize=10
+[debug] [2023-04-30T22:46:42.078Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites 200
+[debug] [2023-04-30T22:46:42.078Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites {"sites":[{"name":"projects/screenhub-e68df/sites/screenhub-e68df","defaultUrl":"https://screenhub-e68df.web.app","appId":"1:841794359724:web:7a31506db61971ae07ea09","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-30T22:46:42.078Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config [none]
+[debug] [2023-04-30T22:46:42.844Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config 200
+[debug] [2023-04-30T22:46:42.844Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config {"projectId":"screenhub-e68df","appId":"1:841794359724:web:7a31506db61971ae07ea09","databaseURL":"https://screenhub-e68df-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2","apiKey":"AIzaSyAg4WnxKjEPtjtnKCGry1m7WI_taCR6D98","authDomain":"screenhub-e68df.firebaseapp.com","messagingSenderId":"841794359724","measurementId":"G-9SG8Z6WLP6"}
+[debug] [2023-04-30T22:46:57.032Z] Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\imagemin-mozjpeg\index.js from C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js not supported.
+Instead change the require of index.js in C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js to a dynamic import() which is available in all CommonJS modules.
+    at requireImageminPlugin (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:21:10)
+    at getImgLoaderOptions (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:42:11)
+    at applyImgLoader (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:96:28)
+    at appendLoaders (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\index.js:137:14)
+    at Object.webpack (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\index.js:62:24)
+    at getBaseWebpackConfig (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-config.js:1992:32)
+    at async Promise.all (index 1)
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async webpackBuildImpl (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\impl.js:129:21)
+    at async webpackBuild (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\index.js:137:16)
+    at async C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:531:119
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async build (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:143:29)
+    at async build (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:55:5)
+    at async prepareFrameworks (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:286:108)
+    at async deploy (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-04-30T22:50:48.796Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T22:50:48.798Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-04-30T22:50:48.799Z] CLI Version:   11.29.1
+[debug] [2023-04-30T22:50:48.799Z] Platform:      win32
+[debug] [2023-04-30T22:50:48.799Z] Node Version:  v16.15.0
+[debug] [2023-04-30T22:50:48.800Z] Time:          Mon May 01 2023 00:50:48 GMT+0200 (hora de verano de Europa central)
+[debug] [2023-04-30T22:50:48.800Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T22:50:48.879Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T22:50:48.880Z] > authorizing via signed-in user (menacho.aitor@gmail.com)
+[debug] [2023-04-30T22:50:48.880Z] [iam] checking project screenhub-e68df for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-04-30T22:50:48.882Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions [none]
+[debug] [2023-04-30T22:50:48.882Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions x-goog-quota-user=projects/screenhub-e68df
+[debug] [2023-04-30T22:50:48.883Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:50:49.087Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions 200
+[debug] [2023-04-30T22:50:49.087Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/screenhub-e68df:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-04-30T22:50:49.088Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df [none]
+[debug] [2023-04-30T22:50:49.346Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df 200
+[debug] [2023-04-30T22:50:49.346Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/screenhub-e68df {"projectId":"screenhub-e68df","projectNumber":"841794359724","displayName":"ScreenHub","name":"projects/screenhub-e68df","resources":{"hostingSite":"screenhub-e68df","realtimeDatabaseInstance":"screenhub-e68df-default-rtdb","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_a6d08a39-2ee8-41c4-a8e4-a60bddcdc289"}
+[debug] [2023-04-30T22:50:54.757Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites pageToken=&pageSize=10
+[debug] [2023-04-30T22:50:55.600Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites 200
+[debug] [2023-04-30T22:50:55.600Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/screenhub-e68df/sites {"sites":[{"name":"projects/screenhub-e68df/sites/screenhub-e68df","defaultUrl":"https://screenhub-e68df.web.app","appId":"1:841794359724:web:7a31506db61971ae07ea09","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-30T22:50:55.600Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config [none]
+[debug] [2023-04-30T22:50:56.429Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config 200
+[debug] [2023-04-30T22:50:56.430Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:841794359724:web:7a31506db61971ae07ea09/config {"projectId":"screenhub-e68df","appId":"1:841794359724:web:7a31506db61971ae07ea09","databaseURL":"https://screenhub-e68df-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"screenhub-e68df.appspot.com","locationId":"europe-west2","apiKey":"AIzaSyAg4WnxKjEPtjtnKCGry1m7WI_taCR6D98","authDomain":"screenhub-e68df.firebaseapp.com","messagingSenderId":"841794359724","measurementId":"G-9SG8Z6WLP6"}
+[debug] [2023-04-30T22:51:10.425Z] Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\imagemin-mozjpeg\index.js from C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js not supported.
+Instead change the require of index.js in C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js to a dynamic import() which is available in all CommonJS modules.
+    at requireImageminPlugin (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:21:10)
+    at getImgLoaderOptions (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:42:11)
+    at applyImgLoader (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\img-loader.js:96:28)
+    at appendLoaders (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\loaders\index.js:137:14)
+    at Object.webpack (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next-optimized-images\lib\index.js:62:24)
+    at getBaseWebpackConfig (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-config.js:1992:32)
+    at async Promise.all (index 0)
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async webpackBuildImpl (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\impl.js:129:21)
+    at async webpackBuild (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\webpack-build\index.js:137:16)
+    at async C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:531:119
+    at async Span.traceAsyncFn (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\trace\trace.js:97:20)
+    at async build (C:\Users\Aitor\Documents\GitHub\ScreenHub\node_modules\next\dist\build\index.js:143:29)
+    at async build (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:55:5)
+    at async prepareFrameworks (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:286:108)
+    at async deploy (C:\Users\Aitor\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
