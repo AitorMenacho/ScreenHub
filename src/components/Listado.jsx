@@ -30,6 +30,7 @@ export default function Listado({ movies, titulo, tipo }) {
                   alt={movie.title}
                   width={200}
                   height={250}
+                  quality={50}
                   className="bg-stone-700 rounded-xl shadow-md"
                   style={{ width: "auto", height: "auto" }}
                 />

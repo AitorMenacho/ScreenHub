@@ -38,6 +38,7 @@ const Peliculas = () => {
               alt={movie.title}
               width={300}
               height={450}
+              quality={50}
               style={{ objectFit: "cover" }}
             />
           </div>
@@ -85,9 +86,9 @@ const Peliculas = () => {
           </div>
         </div>
       </div>
-      <Providers providers={providers.ES} />
+      <Providers providers={providers?.ES} />
       <Actors actors={actors} idSerie={id} tipo={"Peliculas"} />
-      <Trailer trailer={trailer} />
+      <Trailer trailer={trailer[0]} />
       <Productoras productoras={movie.production_companies} />
       <Reviews reviews={reviews} />
       <Recommendations recomendation={recomendation} tipo={"Peliculas"} />

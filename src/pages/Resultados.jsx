@@ -89,6 +89,7 @@ const Resultados = () => {
                         className="h-full w-full object-cover object-center group-hover:opacity-75"
                         width={500}
                         height={750}
+                        quality={50}
                       />
                     </div>
                   </Link>

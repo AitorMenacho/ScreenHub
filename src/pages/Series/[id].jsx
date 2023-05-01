@@ -38,6 +38,7 @@ const Serie = () => {
               alt={tvShow.title}
               width={300}
               height={450}
+              quality={50}
               style={{ objectFit: "cover" }}
             />
             <div
@@ -127,7 +128,7 @@ const Serie = () => {
           </div>
         </div>
       </div>
-      <Providers providers={providers.ES} />
+      <Providers providers={providers?.ES} />
       <Temporadas temporada={tvShow.seasons} idSerie={id} />
       <Actors actors={actors} idSerie={id} tipo={"Series"} />
       <Trailer trailer={trailer} />
