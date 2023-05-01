@@ -12,7 +12,7 @@ const nextConfig = {
       "tailwindui.com",
       "image.tmdb.org",
     ],
-    },
-  };
+  },
+};
 
 module.exports = withPlugins([optimizedImages], nextConfig);
