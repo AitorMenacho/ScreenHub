@@ -16,7 +16,6 @@ export default function InicioSesion() {
       localStorage.setItem("sessionId", sessionId);
       window.location.href = "/Cuenta";
     }
-    
   };
 
   return (

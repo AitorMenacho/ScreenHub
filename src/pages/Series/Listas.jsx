@@ -1,5 +1,6 @@
 import Listado from "@/components/Listado";
 import SeriesApi from "../api/SeriesApi";
+import { useState } from "react";
 
 export default function Listas() {
   const { mejorValoradas, populares, proximosEstrenos, enEmision, tendencia } =
@@ -9,8 +10,16 @@ export default function Listas() {
     <div className="container mx-auto">
       <Listado movies={populares} titulo={"Más populares"} tipo={"Series"} />
       <Listado movies={enEmision} titulo={"En emisión"} tipo={"Series"} />
-      <Listado movies={mejorValoradas} titulo={"Mejores valoradas"} tipo={"Series"} />
-      <Listado movies={proximosEstrenos} titulo={"Lo puedes ver hoy"} tipo={"Series"} />
+      <Listado
+        movies={mejorValoradas}
+        titulo={"Mejores valoradas"}
+        tipo={"Series"}
+      />
+      <Listado
+        movies={proximosEstrenos}
+        titulo={"Lo puedes ver hoy"}
+        tipo={"Series"}
+      />
       <Listado movies={tendencia} titulo={"En tendencia"} tipo={"Series"} />
     </div>
   );

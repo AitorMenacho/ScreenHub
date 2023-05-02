@@ -10,6 +10,7 @@ export default function Resultado() {
   const { genero, plataforma, lanzamiento, valoracion } = router.query;
 
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const generosFormateados = Array.isArray(genero) ? genero.join(",") : genero;
 
@@ -31,8 +32,6 @@ export default function Resultado() {
   const handlePreviousPage = () => {
     page == 1 ? setPage(1) : setPage(page - 1);
   };
-
-  console.log(resultado);
 
   return (
     <>
@@ -84,6 +83,11 @@ export default function Resultado() {
               </div>
             </div>
           </div>
+          {loading && (
+            <div className="absolute z-10 inset-0 bg-stone-950 bg-opacity-50 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500"></div>
+            </div>
+          )}
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {resultado.map((movie) => (
               <div key={movie.id}>
@@ -115,6 +119,7 @@ export default function Resultado() {
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt={movie.title}
                         className="h-full w-full object-cover object-center"
+                        onLoad={() => setLoading(false)}
                         width={500}
                         height={750}
                       />

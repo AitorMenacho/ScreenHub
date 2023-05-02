@@ -8,6 +8,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 const Resultados = () => {
   const router = useRouter();
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const { search } = router.query;
 
@@ -150,12 +151,17 @@ const Resultados = () => {
                       >
                         {(Math.round(movie.vote_average * 10) / 10).toFixed(1)}
                       </p>
-
+                      {loading && (
+                        <div className="absolute z-10 inset-0 bg-stone-950 bg-opacity-50 flex items-center justify-center">
+                          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500"></div>
+                        </div>
+                      )}
                       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
                         <Image
                           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                           alt={movie.title}
                           className="h-full w-full object-cover object-center"
+                          onLoad={() => setLoading(false)}
                           width={500}
                           height={750}
                         />
