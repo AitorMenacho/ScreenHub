@@ -42,7 +42,7 @@ export default function InicioSesion() {
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text--white"
                 >
-                  Email
+                  usuario
                 </label>
                 <div className="mt-2">
                   <input
