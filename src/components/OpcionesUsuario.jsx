@@ -1,12 +1,17 @@
+import Gestiones from "@/pages/api/Gestiones";
 import { useState } from "react";
 
-export default function OpcionesUsuario() {
+export default function OpcionesUsuario(idPelicula) {
   const [guardado, setGuardado] = useState(false);
   const [favorita, setFavorita] = useState(false);
   const [vista, setVista] = useState(false);
 
   const guardar = () => {
-    setGuardado(!guardado);
+    const { guardadoBBDD } = Gestiones(idPelicula);
+
+    console.log(guardadoBBDD);
+
+    setGuardado(guardadoBBDD);
   };
 
   const marcaFavorita = () => {

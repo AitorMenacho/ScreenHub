@@ -10,6 +10,7 @@ export default function App({ Component, pageProps }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [sessionId, setSessionId] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     const session = localStorage.getItem("sessionId");
@@ -25,7 +26,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <UserContext.Provider value={{ isLoggedIn, username, sessionId }}>
+      <UserContext.Provider
+        value={{ isLoggedIn, username, sessionId, userId, setUserId }}
+      >
         {isLoggedIn ? <HeaderIniciado /> : <Header />}
         <Component {...pageProps} />
         <Footer />

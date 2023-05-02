@@ -113,7 +113,7 @@ const Peliculas = () => {
                 </svg>
               ))}
             </div>
-            <OpcionesUsuario />
+            <OpcionesUsuario idPelicula={id} />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { UserContext } from "../_app";
 import { useContext } from "react";
 
 const Cuenta = () => {
-  const { sessionId } = useContext(UserContext);
+  const { sessionId, setUserId } = useContext(UserContext);
 
   const {
     datos,
@@ -15,8 +15,10 @@ const Cuenta = () => {
     seriesFavoritas,
     peliculasPendientes,
     seriesPendientes,
-    listas,
   } = Perfil(sessionId);
+
+  // Guardamos el id del usuario
+  setUserId(datos.id);
 
   // Sacamos un número aleatorio para sacar una foto favorita aleatoria
   const fotoPeli =
