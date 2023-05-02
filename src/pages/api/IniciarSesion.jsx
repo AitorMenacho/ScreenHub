@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import db from "../../../firebase";
 
 const IniciarSesion = (usuario, contrasenna) => {
-  const [token, setToken] = useState(null);
-  const [sessionId, setSessionId] = useState(null);
+  const [token, setToken] = useState("");
+  const [sessionId, setSessionId] = useState("");
 
   useEffect(() => {
     const getToken = async () => {
@@ -54,21 +53,6 @@ const IniciarSesion = (usuario, contrasenna) => {
     getValidaToken();
     getSessionId();
   }, [usuario, contrasenna, token]);
-
-  function guardarSesionId(usuario, sessionId) {
-    db.ref(
-      "https://screenhub-551b8-default-rtdb.europe-west1.firebasedatabase.app/" +
-        usuario
-    ).set({
-      sessionId: sessionId,
-    });
-  }
-
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      guardarSesionId(usuario, sessionId);
-    }
-  });
 
   return { sessionId };
 };

@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import logo from "../../public/logo.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { UserContext } from "@/pages/_app";
 
-export default function Header() {
+export default function HeaderIniciado() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -27,6 +28,8 @@ export default function Header() {
     });
   };
 
+  const { username } = useContext(UserContext);
+
   return (
     <header className="bg-stone-950">
       <nav
@@ -34,7 +37,7 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/home" className="-m-1.5 p-1.5">
             <span className="sr-only">ScreenHub</span>
             <Image src={logo} alt="ScreenHub" width={100} height={100} />
           </Link>
@@ -95,10 +98,10 @@ export default function Header() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
-            href="/InicioSesion"
+            href="/Cuenta/Cuenta"
             className="text-sm font-semibold leading-6 text-white"
           >
-            Iniciar sesión <span aria-hidden="true">&rarr;</span>
+            Hola, {username}
           </Link>
         </div>
       </nav>
@@ -111,7 +114,7 @@ export default function Header() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/home" className="-m-1.5 p-1.5">
               <span className="sr-only">ScreenHub</span>
               <Image src={logo} alt="ScreenHub" width={100} height={100} />
             </a>
@@ -164,10 +167,10 @@ export default function Header() {
               </div>
               <div className="py-6">
                 <Link
-                  href="/InicioSesion"
+                  href="/Cuenta/Cuenta"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                 >
-                  Iniciar sesión
+                  Hola, {username}
                 </Link>
               </div>
             </div>

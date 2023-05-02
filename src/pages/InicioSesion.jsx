@@ -1,22 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import IniciarSesion from "./api/IniciarSesion";
 
 export default function InicioSesion() {
-  const [email, setEmail] = useState("");
+  const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
+  const [submit, setSubmit] = useState(false);
+
+  const { sessionId } = IniciarSesion(usuario, password);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const { sessionId } = IniciarSesion(email, password);
-
-    if (sessionId) {
-      localStorage.setItem("sessionId", sessionId);
-      window.location.href = "/Cuenta";
-    }
+    setSubmit(true);
   };
+
+  useEffect(() => {
+    if (submit) {
+      if (sessionId) {
+        localStorage.setItem("sessionId", sessionId);
+        localStorage.setItem("usuario", usuario);
+        window.location.href = "/Cuenta/Cuenta";
+      }
+    }
+  }, [submit, sessionId, usuario]);
 
   return (
     <>
@@ -39,18 +46,18 @@ export default function InicioSesion() {
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="usuario"
                   className="block text-sm font-medium leading-6 text--white"
                 >
                   usuario
                 </label>
                 <div className="mt-2">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    id="usuario"
+                    name="usuario"
+                    type="text"
+                    autoComplete="usuario"
+                    onChange={(e) => setUsuario(e.target.value)}
                     required
                     className="block w-full rounded-md border-0 pl-2 py-1.5 text-stone-950 shadow-sm ring-1 ring-inset ring-yellow-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-400 sm:text-sm sm:leading-6"
                   />

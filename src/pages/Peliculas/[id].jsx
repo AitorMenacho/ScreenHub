@@ -9,6 +9,8 @@ import Reviews from "@/components/Reviews";
 import Recommendations from "@/components/Recommendations";
 
 import Pelicula from "../api/Pelicula";
+import OpcionesUsuario from "@/components/opcionesUsuario";
+import React, { useRef } from "react";
 
 const Peliculas = () => {
   const router = useRouter();
@@ -16,6 +18,23 @@ const Peliculas = () => {
 
   const { movie, actors, trailer, recomendation, reviews, providers } =
     Pelicula(id);
+
+  const starsRef = useRef([]);
+
+  [...Array(5)].forEach((_, index) => {
+    starsRef.current[index] = React.createRef();
+  });
+
+  const highlightStars = (index) => {
+    starsRef.current.forEach((star, i) => {
+      star.current.setAttribute(
+        "class",
+        `h-6 w-6 fill-current ${
+          i <= index ? "text-yellow-400" : "text-gray-400"
+        }`
+      );
+    });
+  };
 
   if (!movie) return null;
 
@@ -67,7 +86,17 @@ const Peliculas = () => {
                   </span>
                 ))}
             </p>
-            <div className="flex items-center my-5">
+            <div
+              className="flex items-center mt-5 cursor-pointer w-28"
+              onMouseMove={(e) => {
+                const containerRect = e.currentTarget.getBoundingClientRect();
+                const mouseX = e.clientX - containerRect.left;
+                const startToHighlight = Math.floor(
+                  mouseX / (containerRect.width / 5)
+                );
+                highlightStars(startToHighlight);
+              }}
+            >
               {[...Array(5)].map((_, index) => (
                 <svg
                   key={index}
@@ -76,6 +105,7 @@ const Peliculas = () => {
                       ? "text-yellow-400"
                       : "text-gray-400"
                   }`}
+                  ref={starsRef.current[index]}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -83,6 +113,7 @@ const Peliculas = () => {
                 </svg>
               ))}
             </div>
+            <OpcionesUsuario />
           </div>
         </div>
       </div>
