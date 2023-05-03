@@ -55,6 +55,8 @@ export default function Visto({
     }
   };
 
+  console.log(vista);
+
   return (
     <>
       <div className="tooltip">

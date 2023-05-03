@@ -39,6 +39,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
         setFavorita(false);
       }
       if (res.rated) {
+        setVista(true);
         setRating(res.rated.value);
       } else {
         setVista(false);
@@ -48,10 +49,12 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
       } else {
         setGuardado(false);
       }
+      
+      console.log(res)
     };
 
     check();
-  }, [Pelicula, idPelicula, sessionId, userId]);
+  }, [Pelicula, sessionId, userId]);
 
   useEffect(() => {
     if (valorar) {
@@ -85,6 +88,8 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
       return;
     }
   }, [Pelicula, sessionId, rating, valorar]);
+
+  console.log(vista);
 
   return (
     <>
