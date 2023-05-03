@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }) {
     const session = localStorage.getItem("sessionId");
     setUsername(localStorage.getItem("usuario"));
     setSessionId(localStorage.getItem("sessionId"));
+    setUserId(localStorage.getItem("userId"));
 
     if (session) {
       setIsLoggedIn(true);

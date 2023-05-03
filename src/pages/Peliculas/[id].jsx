@@ -10,18 +10,20 @@ import Recommendations from "@/components/Recommendations";
 
 import Pelicula from "../api/Pelicula";
 import OpcionesUsuario from "@/components/opcionesUsuario";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const Peliculas = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [rating, setRating] = useState(1);
+  const [valorar, setValorar] = useState(false);
 
   const { movie, actors, trailer, recomendation, reviews, providers } =
     Pelicula(id);
 
   const starsRef = useRef([]);
 
-  [...Array(5)].forEach((_, index) => {
+  [...Array(10)].forEach((_, index) => {
     starsRef.current[index] = React.createRef();
   });
 
@@ -87,21 +89,33 @@ const Peliculas = () => {
                 ))}
             </p>
             <div
-              className="flex items-center mt-5 cursor-pointer w-28"
+              className="flex items-center mt-5 cursor-pointer w-48"
               onMouseMove={(e) => {
                 const containerRect = e.currentTarget.getBoundingClientRect();
                 const mouseX = e.clientX - containerRect.left;
                 const startToHighlight = Math.floor(
-                  mouseX / (containerRect.width / 5)
+                  mouseX / (containerRect.width / 10)
                 );
                 highlightStars(startToHighlight);
               }}
+              onMouseLeave={() => {
+                highlightStars(movie.vote_average);
+              }}
+              onClick={(e) => {
+                const containerRect = e.currentTarget.getBoundingClientRect();
+                const mouseX = e.clientX - containerRect.left;
+                const startToHighlight = Math.floor(
+                  mouseX / (containerRect.width / 10)
+                );
+                setRating(startToHighlight + 1);
+                setValorar(true);
+              }}
             >
-              {[...Array(5)].map((_, index) => (
+              {[...Array(10)].map((_, index) => (
                 <svg
                   key={index}
                   className={`h-6 w-6 fill-current ${
-                    index < Math.round(movie.vote_average / 2)
+                    index < Math.round(movie.vote_average)
                       ? "text-yellow-400"
                       : "text-gray-400"
                   }`}
@@ -113,7 +127,15 @@ const Peliculas = () => {
                 </svg>
               ))}
             </div>
-            <OpcionesUsuario idPelicula={id} />
+            <span className="text-white ml-2">
+              {Math.round(movie.vote_average)} / 10
+              {movie.vote_count > 0 ? ` (${movie.vote_count} votos)` : ""}
+            </span>
+            <OpcionesUsuario
+              idPelicula={id}
+              valoracion={rating}
+              valorar={valorar}
+            />
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Perfil from "../api/Perfil";
 import ListadoPeliculas from "@/components/listadoPeliculas";
 import { UserContext } from "../_app";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const Cuenta = () => {
   const { sessionId, setUserId } = useContext(UserContext);
@@ -17,8 +17,11 @@ const Cuenta = () => {
     seriesPendientes,
   } = Perfil(sessionId);
 
-  // Guardamos el id del usuario
-  setUserId(datos.id);
+  useEffect(() => {
+    if (datos.id) {
+      localStorage.setItem("userId", datos.id);
+    }
+  }, [datos.id]);
 
   // Sacamos un número aleatorio para sacar una foto favorita aleatoria
   const fotoPeli =

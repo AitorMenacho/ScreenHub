@@ -10,9 +10,9 @@ const nextConfig = {
       "image.tmdb.org",
     ],
   },
-  experimental: {
-    outputStandalone: true,
-  }
+  // experimental: {
+  //   output: "standalone",
+  // },
 };
 
 module.exports = nextConfig;

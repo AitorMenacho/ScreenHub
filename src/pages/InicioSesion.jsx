@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import IniciarSesion from "./api/IniciarSesion";
 
 export default function InicioSesion() {
@@ -20,6 +20,7 @@ export default function InicioSesion() {
       if (sessionId) {
         localStorage.setItem("sessionId", sessionId);
         localStorage.setItem("usuario", usuario);
+        localStorage.setItem("userId", userId);
         window.location.href = "/Cuenta/Cuenta";
       }
     }
