@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import OpcionesUsuario from "./OpcionesUsuario";
 import Sinopsis from "./Sinopsis";
+import { UserContext } from "@/pages/_app";
 
 export function Datos({
   id,
@@ -16,6 +17,8 @@ export function Datos({
   const [rating, setRating] = useState(1);
   const [valorar, setValorar] = useState(false);
   const starsRef = useRef([]);
+
+  const { sessionId } = useContext(UserContext);
 
   [...Array(10)].forEach((_, index) => {
     starsRef.current[index] = React.createRef();
@@ -102,11 +105,14 @@ export function Datos({
           {Math.round(valoracion)} / 10
           {votos > 0 ? ` (${votos} votos)` : ""}
         </span>
-        <OpcionesUsuario
-          idPelicula={id}
-          valoracion={rating}
-          valorar={valorar}
-        />
+        <hr className="my-5" />
+        {sessionId && (
+          <OpcionesUsuario
+            idPelicula={id}
+            valoracion={rating}
+            valorar={valorar}
+          />
+        )}
       </div>
     </>
   );
