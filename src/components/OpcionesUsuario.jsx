@@ -4,7 +4,12 @@ import Favorito from "./opciones/Favorito";
 import Visto from "./opciones/Visto";
 import Guardar from "./opciones/Guardar";
 
-export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
+export default function OpcionesUsuario({
+  idPelicula,
+  valoracion,
+  valorar,
+  tipo,
+}) {
   const [guardado, setGuardado] = useState(false);
   const [favorita, setFavorita] = useState(false);
   const [vista, setVista] = useState(false);
@@ -25,7 +30,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
     // Comprueba el estado de la película para marcar o desmarcar los botones
     const checkStatus = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${Pelicula}/account_states?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionId}`
+        `https://api.themoviedb.org/3/${tipo}/${Pelicula}/account_states?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionId}`
       );
       const data = await response.json();
       return data;
@@ -43,6 +48,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
         setRating(res.rated.value);
       } else {
         setVista(false);
+        setRating(0);
       }
       if (res.watchlist) {
         setGuardado(true);
@@ -52,13 +58,13 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
     };
 
     check();
-  }, [Pelicula, sessionId, userId]);
+  }, [Pelicula, sessionId, userId, tipo]);
 
   useEffect(() => {
     if (valorar) {
       const cambiarValoracion = async () => {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${Pelicula}/rating?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionId}`,
+          `https://api.themoviedb.org/3/${tipo}/${Pelicula}/rating?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionId}`,
           {
             method: "POST",
             headers: {
@@ -76,7 +82,6 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
       const cambiar = async () => {
         const res = await cambiarValoracion();
         if (res) {
-          setRating(res.value);
           setVista(true);
         }
       };
@@ -85,7 +90,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
     } else {
       return;
     }
-  }, [Pelicula, sessionId, rating, valorar]);
+  }, [Pelicula, sessionId, rating, valorar, tipo]);
 
   return (
     <>
@@ -96,6 +101,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
           userId={userId}
           sessionId={sessionId}
           idPelicula={Pelicula}
+          tipo={tipo}
         />
         <Favorito
           favorita={favorita}
@@ -103,6 +109,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
           userId={userId}
           sessionId={sessionId}
           idPelicula={Pelicula}
+          tipo={tipo}
         />
         <Visto
           vista={vista}
@@ -111,6 +118,7 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
           sessionId={sessionId}
           idPelicula={Pelicula}
           rating={rating}
+          tipo={tipo}
         />
         <p>
           Tu valoración:{" "}

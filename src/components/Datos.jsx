@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import OpcionesUsuario from "./OpcionesUsuario";
 import Sinopsis from "./Sinopsis";
 import { UserContext } from "@/pages/_app";
+import { format } from "date-fns";
 
 export function Datos({
   id,
@@ -13,6 +14,7 @@ export function Datos({
   genero,
   valoracion,
   votos,
+  tipo,
 }) {
   const [rating, setRating] = useState(1);
   const [valorar, setValorar] = useState(false);
@@ -35,6 +37,12 @@ export function Datos({
     });
   };
 
+  const fechaFormateada =
+    fechaEstreno && format(new Date(fechaEstreno), "dd/MM/yyyy");
+
+  const duracionFormateada =
+    duracion && `${Math.floor(duracion / 60)}h ${duracion % 60}m`;
+
   return (
     <>
       <div className="col-span-1">
@@ -45,10 +53,10 @@ export function Datos({
         <Sinopsis sinopsis={sinopsis} titulo={titulo} />
 
         <p className="text-white my-1">
-          <span className="font-bold">Fecha de estreno:</span> {fechaEstreno}
+          <span className="font-bold">Fecha de estreno:</span> {fechaFormateada}
         </p>
         <p className="text-white my-1">
-          <span className="font-bold">Duración:</span> {duracion} min
+          <span className="font-bold">Duración:</span> {duracionFormateada}
         </p>
         <p className="font-bold mb-2">Género</p>
         <p className="text-white">
@@ -111,6 +119,7 @@ export function Datos({
             idPelicula={id}
             valoracion={rating}
             valorar={valorar}
+            tipo={tipo}
           />
         )}
       </div>

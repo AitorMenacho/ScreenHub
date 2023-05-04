@@ -5,11 +5,12 @@ export default function Visto({
   vista,
   setVista,
   rating,
+  tipo,
 }) {
   const marcarVista = async () => {
     const marcando = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${idPelicula}/rating?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionId}`,
+        `https://api.themoviedb.org/3/${tipo}/${idPelicula}/rating?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionId}`,
         {
           method: "POST",
           headers: {
@@ -33,7 +34,7 @@ export default function Visto({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            media_type: "movie",
+            media_type: tipo,
             media_id: idPelicula,
           }),
         }
@@ -54,8 +55,6 @@ export default function Visto({
       }
     }
   };
-
-  console.log(vista);
 
   return (
     <>

@@ -43,11 +43,12 @@ const Serie = () => {
             sinopsis={tvShow.overview}
             titulo={tvShow.name}
             tagline={tvShow.tagline}
-            fechaEstreno={tvShow.relase_date}
+            fechaEstreno={tvShow.first_air_date}
             duracion={tvShow.episode_run_time}
-            genero={tvShow.genre}
+            genero={tvShow.genres}
             valoracion={tvShow.vote_average}
             votos={tvShow.vote_count}
+            tipo={"tv"}
           />
         </div>
       </div>

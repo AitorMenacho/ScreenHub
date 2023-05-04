@@ -4,6 +4,7 @@ export default function Favorito({
   idPelicula,
   favorita,
   setFavorita,
+  tipo,
 }) {
   const marcarFavorita = async () => {
     const marcando = async () => {
@@ -15,7 +16,7 @@ export default function Favorito({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            media_type: "movie",
+            media_type: tipo,
             media_id: idPelicula,
             favorite: true,
           }),
@@ -34,7 +35,7 @@ export default function Favorito({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            media_type: "movie",
+            media_type: tipo,
             media_id: idPelicula,
             favorite: false,
           }),

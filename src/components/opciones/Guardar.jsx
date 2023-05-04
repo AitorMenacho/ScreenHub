@@ -4,6 +4,7 @@ export default function Guardar({
   idPelicula,
   guardado,
   setGuardado,
+  tipo,
 }) {
   const marcarMasTarde = async () => {
     const marcando = async () => {
@@ -15,7 +16,7 @@ export default function Guardar({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            media_type: "movie",
+            media_type: tipo,
             media_id: idPelicula,
             watchlist: true,
           }),
@@ -34,7 +35,7 @@ export default function Guardar({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            media_type: "movie",
+            media_type: tipo,
             media_id: idPelicula,
             watchlist: false,
           }),

@@ -22,6 +22,8 @@ const Peliculas = () => {
 
   if (!movie) return null;
 
+  console.log(movie)
+
   return (
     <>
       <div
@@ -42,11 +44,12 @@ const Peliculas = () => {
             sinopsis={movie.overview}
             titulo={movie.title}
             tagline={movie.tagline}
-            fechaEstreno={movie.relase_date}
+            fechaEstreno={movie.release_date}
             duracion={movie.runtime}
-            genero={movie.genre}
+            genero={movie.genres}
             valoracion={movie.vote_average}
             votos={movie.vote_count}
+            tipo={"movie"}
           />
         </div>
       </div>
