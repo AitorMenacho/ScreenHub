@@ -14,7 +14,7 @@ const Sagas = () => {
   return (
     <>
       <div
-        className="relative py-32 bg-gray-800 bg-stone-950 bg-opacity-50 bg-blend-darken"
+        className="relative py-32 bg-stone-950 bg-opacity-50 bg-blend-darken"
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original${saga.backdrop_path})`,
           backgroundSize: "cover",
