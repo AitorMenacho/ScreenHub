@@ -1,8 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { Tarjeta } from "./resultados/Tarjeta";
-import { Puntuacion } from "./puntuacion";
+import { Puntuacion } from "./Puntuacion";
 
 export default function Listado({ movies, titulo, tipo }) {
   const [loading, setLoading] = useState(true);
