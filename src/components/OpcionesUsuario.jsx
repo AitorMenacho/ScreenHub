@@ -49,8 +49,6 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
       } else {
         setGuardado(false);
       }
-      
-      console.log(res)
     };
 
     check();
@@ -88,8 +86,6 @@ export default function OpcionesUsuario({ idPelicula, valoracion, valorar }) {
       return;
     }
   }, [Pelicula, sessionId, rating, valorar]);
-
-  console.log(vista);
 
   return (
     <>

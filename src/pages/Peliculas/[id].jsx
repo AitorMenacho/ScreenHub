@@ -11,6 +11,8 @@ import Recommendations from "@/components/Recommendations";
 import Pelicula from "../api/Pelicula";
 import OpcionesUsuario from "@/components/OpcionesUsuario";
 import React, { useRef, useState } from "react";
+import Saga from "@/components/pelicula/Saga";
+import Sinopsis from "@/components/Sinopsis";
 
 const Peliculas = () => {
   const router = useRouter();
@@ -68,7 +70,8 @@ const Peliculas = () => {
             <div className="bg-yellow-500 text-stone-950 py-2 px-4 rounded-lg my-2">
               <h3 className="text-2xl font-bold">{movie.tagline}</h3>
             </div>
-            <p className="text-white">{movie.overview}</p>
+            <Sinopsis sinopsis={movie.overview} titulo={movie.title} />
+
             <p className="text-white my-1">
               <span className="font-bold">Fecha de estreno:</span>{" "}
               {movie.release_date}
@@ -76,7 +79,7 @@ const Peliculas = () => {
             <p className="text-white my-1">
               <span className="font-bold">Duración:</span> {movie.runtime} min
             </p>
-            <p className="font-bold mt-5 mb-2">Género</p>
+            <p className="font-bold mb-2">Género</p>
             <p className="text-white">
               {movie.genres &&
                 movie.genres.map((genre) => (
@@ -142,6 +145,7 @@ const Peliculas = () => {
       <Providers providers={providers?.ES} />
       <Actors actors={actors} idSerie={id} tipo={"Peliculas"} />
       <Trailer trailer={trailer[0]} />
+      <Saga saga={movie.belongs_to_collection} />
       <Productoras productoras={movie.production_companies} />
       <Reviews reviews={reviews} />
       <Recommendations recomendation={recomendation} tipo={"Peliculas"} />

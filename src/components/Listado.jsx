@@ -30,7 +30,9 @@ export default function Listado({ movies, titulo, tipo }) {
                 </p>
                 {loading && (
                   <div className="absolute z-10 inset-0 bg-stone-950 bg-opacity-50 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500"></div>
+                    <div className="absolute z-10 inset-0 bg-stone-950 bg-opacity-50 flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500"></div>
+                    </div>
                   </div>
                 )}
                 <Image

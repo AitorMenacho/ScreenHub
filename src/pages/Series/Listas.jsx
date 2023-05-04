@@ -1,6 +1,5 @@
 import Listado from "@/components/Listado";
 import SeriesApi from "../api/SeriesApi";
-import { useState } from "react";
 
 export default function Listas() {
   const { mejorValoradas, populares, proximosEstrenos, enEmision, tendencia } =

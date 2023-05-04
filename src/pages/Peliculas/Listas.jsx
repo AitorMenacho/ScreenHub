@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import PeliculasApi from "../api/Peliculas";
 import Listado from "@/components/Listado";
 
