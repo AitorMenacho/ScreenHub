@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Persona from "../api/Persona";
+import { ImagenPortada } from "@/components/ImagenPortada";
+import Sinopsis from "@/components/Sinopsis";
 
 const Peliculas = () => {
   const router = useRouter();
@@ -12,10 +14,29 @@ const Peliculas = () => {
 
   if (!persona || !peliculas || !series) return null;
 
-  const fotoPeli =
-    peliculas.cast && peliculas.cast.length > 0
-      ? Math.floor(Math.random() * (peliculas.cast.length + 1))
-      : 0;
+  let fotoPeli = "";
+  let posicion = null;
+
+  if (peliculas.cast && peliculas.cast.length > 0) {
+    // Generar una posición aleatoria
+    posicion = Math.floor(Math.random() * peliculas.cast.length);
+  }
+
+  // Comprobar si la imagen de fondo es nula y generar una nueva posición si es necesario
+  while (!fotoPeli && posicion !== null) {
+    const backdropPath = peliculas.cast[posicion].backdrop_path;
+    if (backdropPath) {
+      fotoPeli = `url('https://image.tmdb.org/t/p/original${backdropPath}')`;
+    } else {
+      posicion = Math.floor(Math.random() * peliculas.cast.length);
+    }
+  }
+
+  // Si la imagen de fondo sigue siendo nula, utilizar una imagen por defecto
+  if (!fotoPeli) {
+    fotoPeli =
+      'url("https://via.placeholder.com/1920x1080?text=No+se+encontr%c3%b3+imagen")';
+  }
 
   const verTodasPeliculas = () => {
     router.push(`/Persona/${id}/Peliculas`);
@@ -31,24 +52,21 @@ const Peliculas = () => {
         <div
           className="relative bg-cover bg-center flex justify-center items-center bg-no-repeat bg-fixed bg-gray-900 bg-opacity-50 bg-blend-darken"
           style={{
-            backgroundImage: `url('https://image.tmdb.org/t/p/original${peliculas.cast[fotoPeli]?.backdrop_path}')`,
+            backgroundImage: `${fotoPeli}`,
             height: "70vh",
             backgroundColor: "rgba(0,0,0,0.7)",
           }}
         >
           <div className="container columns-2 z-10">
             <div className="col-span-2">
-              <Image
-                className="rounded-lg"
-                src={`https://image.tmdb.org/t/p/w500${persona.profile_path}`}
-                alt={persona.name}
-                width={300}
-                height={450}
+              <ImagenPortada
+                poster={persona.profile_path}
+                titulo={persona.name}
               />
             </div>
             <div className="col-span-1">
               <h1 className="text-3xl font-bold text-white">{persona.name}</h1>
-              <p className="text-white">{persona.biography}</p>
+              <Sinopsis sinopsis={persona.biography} />
               <p className="text-white my-1">
                 <span className="font-bold">Fecha de nacimiento:</span>{" "}
                 {persona.birthday}

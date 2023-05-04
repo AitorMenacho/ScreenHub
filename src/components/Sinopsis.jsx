@@ -7,7 +7,7 @@ export default function Sinopsis({ sinopsis, titulo }) {
 
   // Limitar la sinopsis a 300 caracteres
   const sinopsisAcortada =
-    sinopsis && sinopsis.length > 250 && !mostrarSinopsis
+    sinopsis && sinopsis.length > 250
       ? sinopsis.slice(0, 250).concat("...")
       : sinopsis;
 
