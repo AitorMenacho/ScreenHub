@@ -24,7 +24,7 @@ Puedes disfrutar de las funciones realizadas hasta el momento simplemente entran
 - [x] Detalles de cada título: descubre detalles sobre cada título como actores, tráilers, sinopsis, plataforma de streaming y más.
 - [x] Películas: Sección donde podrás ver los útlimos lanzamientos, las más valoradas, etc.
 - [x] Series: Sección donde podrás ver los últimos lanzamientos, las más valoradas, etc.
-- [ ] Perfil: Donde podrás ver todos los detalles sobre ti.
+- [x] Perfil: Donde podrás ver todos los detalles sobre ti.
 - [ ] Listas personalizadas: organiza tus películas y series vistas y por ver en listas personalizadas, para tener un seguimiento de todo lo que has visto y lo que te gustaría ver en el futuro.
 - [ ] Recomendaciones personalizadas: basadas en tus películas y series vistas, ScreenHub te sugiere otros títulos que podrían interesarte.
 - [x] Recomendaciones generales: ScreenHub también te ofrece recomendaciones de películas y series generales, para que puedas descubrir nuevos títulos y expandir tus gustos
