@@ -3,7 +3,7 @@ import Buscar from "./api/Buscar";
 import { useState } from "react";
 import PasaPagina from "@/components/PasaPagina";
 import { Tarjeta } from "@/components/resultados/Tarjeta";
-import { Puntuacion } from "@/components/puntuacion";
+import { Puntuacion } from "@/components/Puntuacion";
 
 const Resultados = () => {
   const router = useRouter();

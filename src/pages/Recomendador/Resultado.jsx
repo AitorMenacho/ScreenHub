@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import FiltradoRecomendacion from "../api/FiltradoRecomendacion";
 import { useState } from "react";
 import PasaPagina from "@/components/PasaPagina";
-import { Puntuacion } from "@/components/puntuacion";
+import { Puntuacion } from "@/components/Puntuacion";
 import { Tarjeta } from "@/components/resultados/Tarjeta";
 
 export default function Resultado() {
