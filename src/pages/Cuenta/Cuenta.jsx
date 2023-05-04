@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Perfil from "../api/Perfil";
-import ListadoPeliculas from "@/components/listadoPeliculas";
+import ListadoPeliculas from "@/components/ListadoPeliculas";
 import { UserContext } from "../_app";
 import { useContext, useEffect } from "react";
 

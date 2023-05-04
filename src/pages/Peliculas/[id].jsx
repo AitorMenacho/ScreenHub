@@ -9,7 +9,7 @@ import Reviews from "@/components/Reviews";
 import Recommendations from "@/components/Recommendations";
 
 import Pelicula from "../api/Pelicula";
-import OpcionesUsuario from "@/components/opcionesUsuario";
+import OpcionesUsuario from "@/components/OpcionesUsuario";
 import React, { useRef, useState } from "react";
 
 const Peliculas = () => {
