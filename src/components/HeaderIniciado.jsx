@@ -26,6 +26,8 @@ export default function HeaderIniciado() {
       pathname: "/Resultados",
       query: { search },
     });
+
+    setMobileMenuOpen(false);
   };
 
   const { username } = useContext(UserContext);
@@ -132,19 +134,22 @@ export default function HeaderIniciado() {
               <div className="space-y-2 py-6">
                 <Link
                   href="/Peliculas/Listas"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Películas
                 </Link>
                 <Link
                   href="/Series/Listas"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Series
                 </Link>
                 <Link
                   href="/Recomendador/opciones"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Recomendador
                 </Link>
@@ -168,7 +173,8 @@ export default function HeaderIniciado() {
               <div className="py-6">
                 <Link
                   href="/Cuenta/Cuenta"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Hola, {username}
                 </Link>

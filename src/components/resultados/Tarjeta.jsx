@@ -4,7 +4,7 @@ import Link from "next/link";
 export function Tarjeta({ id, tipo, nombre, imagen, loading, setLoading }) {
   return (
     <Link href={`/${tipo}/${id}`} className="group">
-      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-yellow-500 xl:aspect-h-8 xl:aspect-w-7">
+      <div className="w-full overflow-hidden rounded-lg bg-yellow-500">
         {loading ? (
           <div className="animate-pulse flex items-center justify-center h-full w-full bg-gray-800">
             <svg
@@ -29,10 +29,19 @@ export function Tarjeta({ id, tipo, nombre, imagen, loading, setLoading }) {
             </svg>
           </div>
         ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+        <div className="absolute inset-0 p-4 flex flex-col justify-end">
+          <h3 className="text-xl font-bold text-white">{nombre}</h3>
+        </div>
         <Image
           src={`https://image.tmdb.org/t/p/w500${imagen}`}
           alt={nombre}
-          className="h-full w-full object-cover object-center"
+          className="w-full object-cover object-center"
+          style={{
+            filter: loading ? "blur(5px)" : "none",
+            transition: "filter 0.2s ease-in-out",
+            height: "25rem",
+          }}
           width={500}
           height={750}
           quality={50}

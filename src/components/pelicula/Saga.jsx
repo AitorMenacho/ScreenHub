@@ -9,10 +9,10 @@ export default function Saga({ saga }) {
           {saga && saga.poster_path ? (
             <Link href={`/Sagas/${saga.id}`}>
               <div
-                className="relative bg-cover bg-center bg-no-repeat bg-gray-900 bg-opacity-50 bg-blend-darken rounded-lg w-full"
+                className="relative bg-cover bg-center bg-no-repeat bg-stone-950 bg-opacity-50 bg-blend-darken rounded-lg w-full"
                 style={{
                   backgroundImage: `url('https://image.tmdb.org/t/p/original${saga.poster_path}')`,
-                  height: "60vh",
+                  height: "50vh",
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>

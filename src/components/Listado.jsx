@@ -8,7 +8,7 @@ export default function Listado({ movies, titulo, tipo }) {
   return (
     <div className="bg-stone-800 p-5 mt-5 rounded-xl">
       <h1 className="text-4xl font-bold text-center mb-10">{titulo}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 justify-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 justify-items-center">
         {movies &&
           movies.slice(0, 12).map((movie) => (
             <div className="relative" key={movie.id}>
@@ -16,7 +16,7 @@ export default function Listado({ movies, titulo, tipo }) {
               <Tarjeta
                 id={movie.id}
                 tipo={tipo}
-                nombre={movie.title}
+                nombre={movie.title || movie.name}
                 imagen={movie.poster_path}
                 loading={loading}
                 setLoading={setLoading}

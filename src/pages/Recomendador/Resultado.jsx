@@ -48,7 +48,7 @@ export default function Resultado() {
                   <Tarjeta
                     id={movie.id}
                     tipo={movie.media_type === "tv" ? "Series" : "Peliculas"}
-                    nombre={movie.name}
+                    nombre={movie.name || movie.title}
                     imagen={movie.poster_path}
                     loading={loading}
                     setLoading={setLoading}

@@ -25,6 +25,8 @@ export default function Header() {
       pathname: "/Resultados",
       query: { search },
     });
+
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -129,19 +131,22 @@ export default function Header() {
               <div className="space-y-2 py-6">
                 <Link
                   href="/Peliculas/Listas"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Películas
                 </Link>
                 <Link
                   href="/Series/Listas"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Series
                 </Link>
                 <Link
                   href="/Recomendador/opciones"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Recomendador
                 </Link>
@@ -150,7 +155,7 @@ export default function Header() {
                 <input
                   type="text"
                   placeholder="Buscar..."
-                  className="bg-gray-100 border border-gray-200 rounded-md py-2 px-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-900/10"
+                  className="bg-gray-100 border border-gray-200 rounded-md py-2 px-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-900/10 focus:text-stone-950"
                   onChange={handleSearch}
                 />
                 <button
@@ -165,7 +170,8 @@ export default function Header() {
               <div className="py-6">
                 <Link
                   href="/InicioSesion"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Iniciar sesión
                 </Link>

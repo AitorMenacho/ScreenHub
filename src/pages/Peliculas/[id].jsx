@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 import Providers from "@/components/Providers";
 import Actors from "@/components/Actors";
@@ -21,8 +20,6 @@ const Peliculas = () => {
     Pelicula(id);
 
   if (!movie) return null;
-
-  console.log(movie)
 
   return (
     <>

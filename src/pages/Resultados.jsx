@@ -39,7 +39,7 @@ const Resultados = () => {
                       ? "Peliculas"
                       : "Persona"
                   }
-                  nombre={movie.name}
+                  nombre={movie.name || movie.title}
                   imagen={
                     movie.media_type === "person"
                       ? movie.profile_path
