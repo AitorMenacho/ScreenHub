@@ -26,6 +26,8 @@ export default function Resultado() {
     tipo
   );
 
+  console.log(resultado)
+
   return (
     <>
       <div className="bg-stone-950">

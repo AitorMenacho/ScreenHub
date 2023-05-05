@@ -20,7 +20,6 @@ export default function InicioSesion() {
       if (sessionId) {
         localStorage.setItem("sessionId", sessionId);
         localStorage.setItem("usuario", usuario);
-        localStorage.setItem("userId", userId);
         window.location.href = "/Cuenta/Cuenta";
       }
     }
