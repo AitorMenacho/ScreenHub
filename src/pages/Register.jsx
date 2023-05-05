@@ -1,6 +1,7 @@
 import Image from "next/image";
-import FeatureSection from "../components/FeatureSection";
-import Section from "../components/Section";
+import Section from "../components/Section.js";
+import FeatureSection from "../components/FeatureSection.js";
+import logo from "../../public/logoInicio.svg";
 
 export default function Register() {
   return (
