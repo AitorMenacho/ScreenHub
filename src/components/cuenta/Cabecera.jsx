@@ -12,6 +12,7 @@ export default function Cabecera({
   backgroundImage,
   fotoPerfil,
 }) {
+  console.log(peliculasVistas);
 
   return (
     <>

@@ -1,15 +1,20 @@
+import Image from "next/image";
 import Perfil from "../api/Perfil";
+import ListadoPeliculas from "@/components/ListadoPeliculas";
 import { UserContext } from "../_app";
 import { useContext, useEffect, useState } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Filtrado from "@/components/cuenta/Filtrado";
+import ResultadoFiltrado from "@/components/cuenta/ResultadoFiltrado";
 import Cabecera from "@/components/cuenta/Cabecera";
 
 const Cuenta = () => {
   const { sessionId, username } = useContext(UserContext);
-  const [filter, setFilter] = useState("peliculasVistas");
-  const [series, setSeries] = useState([]);
+  const [filter, setFilter] = useState("vistas");
   const [peliculas, setPeliculas] = useState([]);
+  const [series, setSeries] = useState([]);
 
-  const [loading, setLoading] = useState(true);
   const {
     datos,
     peliculasVistas,
@@ -26,46 +31,11 @@ const Cuenta = () => {
     ultimaSerieFavorita,
   } = Perfil(sessionId);
 
-  console.log("ultima pelicula vista", ultimaPeliculaVista);
-  console.log("ultima serie vista", ultimaSerieVista);
-  console.log("ultima pelicula pendiente", ultimaPeliculaPendiente);
-  console.log("ultima serie pendiente", ultimaSeriePendiente);
-  console.log("ultima pelicula favorita", ultimaPeliculaFavorita);
-  console.log("ultima serie favorita", ultimaSerieFavorita);
-
   useEffect(() => {
     if (datos.id) {
       localStorage.setItem("userId", datos.id);
-      setLoading(false);
     }
   }, [datos.id]);
-
-  useEffect(() => {
-    if (!loading) {
-      if (filter === "peliculasVistas") {
-        setPeliculas(peliculasVistas);
-      } else if (filter === "seriesVistas") {
-        setSeries(seriesVistas);
-      } else if (filter === "peliculasFavoritas") {
-        setPeliculas(peliculasFavoritas);
-      } else if (filter === "seriesFavoritas") {
-        setSeries(seriesFavoritas);
-      } else if (filter === "peliculasPendientes") {
-        setPeliculas(peliculasPendientes);
-      } else if (filter === "seriesPendientes") {
-        setSeries(seriesPendientes);
-      }
-    }
-  }, [
-    filter,
-    loading,
-    peliculasVistas,
-    seriesVistas,
-    peliculasFavoritas,
-    seriesFavoritas,
-    peliculasPendientes,
-    seriesPendientes,
-  ]);
 
   // Sacamos un número aleatorio para sacar una foto favorita aleatoria
   const fotoPeli =
@@ -81,27 +51,20 @@ const Cuenta = () => {
       ? `url('https://image.tmdb.org/t/p/original${peliculasFavoritas.results[fotoPeli]?.backdrop_path}')`
       : "none";
 
-  if (!sessionId) return null;
+  const fotoPerfil = datos && datos.avatar?.tmdb.avatar_path;
+
+  console.log(ultimaPeliculaVista);
 
   return (
     <>
       <Cabecera
-        peliculasVistas={peliculasVistas}
-        seriesVistas={seriesVistas.results}
-        peliculasFavoritas={peliculasFavoritas.results}
-        seriesFavoritas={seriesFavoritas.results}
-        peliculasPendientes={peliculasPendientes.results}
-        seriesPendientes={seriesPendientes.results}
-        nombre={datos.name}
+        fotoPerfil={fotoPerfil}
         backgroundImage={backgroundImage}
-        fotoPerfil={datos.avatar?.tmdb.avatar_path}
+        nombre={datos.name}
+        peliculasVistas={ultimaPeliculaVista}
       />
-      {/* <div className="container mt-5 mb-5 mx-auto">
-        <Filtrado setFilter={setFilter} username={username} />
-      </div>
-      <div className="container mx-auto">
-        <ResultadoFiltrado peliculas={peliculas} series={series} />
-      </div> */}
+      <Filtrado setFilter={setFilter} username={username} />
+      <ResultadoFiltrado peliculas={peliculas} series={series} />
     </>
   );
 };

@@ -1,6 +1,9 @@
 import Image from "next/image";
 
 export default function Informacion({ titulo, pelicula }) {
+
+  console.log(pelicula.results)
+
   return (
     <>
       {/* <Image
