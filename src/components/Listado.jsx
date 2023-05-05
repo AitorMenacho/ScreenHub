@@ -8,9 +8,9 @@ export default function Listado({ movies, titulo, tipo }) {
   return (
     <div className="bg-stone-800 p-5 mt-5 rounded-xl">
       <h1 className="text-4xl font-bold text-center mb-10">{titulo}</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 justify-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 justify-items-center">
         {movies &&
-          movies.slice(0, 12).map((movie) => (
+          movies.slice(0, 10).map((movie) => (
             <div className="relative" key={movie.id}>
               <Puntuacion puntuacion={movie.vote_average} />
               <Tarjeta

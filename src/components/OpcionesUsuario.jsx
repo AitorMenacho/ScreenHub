@@ -94,7 +94,7 @@ export default function OpcionesUsuario({
 
   return (
     <>
-      <div className="flex flex-row items-center pt-5 pb-5">
+      <div className="flex flex-row items-center">
         <Guardar
           guardado={guardado}
           setGuardado={setGuardado}

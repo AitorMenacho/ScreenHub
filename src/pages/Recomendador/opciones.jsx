@@ -13,7 +13,9 @@ export default function Opciones() {
   const [checkedItems, setCheckedItems] = useState({});
   const [checkedItemsProvider, setCheckedItemsProvider] = useState({});
   const [checkedItemsValoracion, setCheckedItemsValoracion] = useState({});
+  const [checkedItemsTipo, setCheckedItemsTipo] = useState({});
   const [valoracion, setValoracion] = useState({});
+  const [tipo, setTipo] = useState({});
   const [generos, setGeneros] = useState([]);
   const [plataformas, setPlataformas] = useState([]);
   const [fechaLanzamiento, setFechaLanzamiento] = useState([
@@ -50,6 +52,13 @@ export default function Opciones() {
     setValoracion(e.target.name);
   };
 
+  const handleCheckedboxTipo = (e) => {
+    setCheckedItemsTipo({
+      [e.target.name]: e.target.checked,
+    });
+    setTipo(e.target.name);
+  };
+
   function handleClick() {
     router.push({
       pathname: "/Recomendador/Resultado",
@@ -58,6 +67,7 @@ export default function Opciones() {
         plataforma: plataformas,
         lanzamiento: fechaLanzamiento,
         valoracion: valoracion,
+        tipo: tipo,
       },
     });
   }
@@ -235,8 +245,8 @@ export default function Opciones() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1">
-        <div className="bg-stone-800 p-5 mt-5 rounded-xl">
+      <div className="grid grid-cols-2">
+        <div className="bg-stone-800 p-5 mt-5 mr-5 rounded-xl">
           <h1 className="text-4xl font-bold text-center mb-10">
             Filtrar por valoración
           </h1>
@@ -252,6 +262,25 @@ export default function Opciones() {
               label="Filtro normal"
               checked={checkedItemsValoracion["normal"]}
               onChange={(e) => handleCheckedboxValoracion(e)}
+            />
+          </div>
+        </div>
+        <div className="bg-stone-800 p-5 mt-5 ml-5 rounded-xl">
+          <h1 className="text-4xl font-bold text-center mb-10">
+            ¿Que quieres?
+          </h1>
+          <div className="flex flex-wrap justify-center">
+            <Checkbox
+              name="tv"
+              label="Series"
+              checked={checkedItemsTipo["tv"]}
+              onChange={(e) => handleCheckedboxTipo(e)}
+            />
+            <Checkbox
+              name="movie"
+              label="Peliculas"
+              checked={checkedItemsTipo["movie"]}
+              onChange={(e) => handleCheckedboxTipo(e)}
             />
           </div>
         </div>

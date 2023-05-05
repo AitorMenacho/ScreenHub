@@ -7,7 +7,7 @@ import { Tarjeta } from "@/components/resultados/Tarjeta";
 
 export default function Resultado() {
   const router = useRouter();
-  const { genero, plataforma, lanzamiento, valoracion } = router.query;
+  const { genero, plataforma, lanzamiento, valoracion, tipo } = router.query;
 
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,8 @@ export default function Resultado() {
     lanzamiento,
     plataforma,
     valoracionNumerica,
-    page
+    page,
+    tipo
   );
 
   return (
@@ -47,7 +48,7 @@ export default function Resultado() {
                   <Puntuacion puntuacion={movie.vote_average} />
                   <Tarjeta
                     id={movie.id}
-                    tipo={movie.media_type === "tv" ? "Series" : "Peliculas"}
+                    tipo={tipo === "tv" ? "Series" : "Peliculas"}
                     nombre={movie.name || movie.title}
                     imagen={movie.poster_path}
                     loading={loading}

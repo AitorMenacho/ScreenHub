@@ -45,6 +45,7 @@ const IniciarSesion = (usuario, contrasenna) => {
           }),
         }
       );
+      const data = await response.json();
       setSessionId(data.session_id);
     };
 

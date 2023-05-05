@@ -9,6 +9,12 @@ const Perfil = (idSession) => {
   const [peliculasPendientes, setPeliculasPendientes] = useState([]);
   const [seriesPendientes, setSeriesPendientes] = useState([]);
   const [listas, setListas] = useState([]);
+  const [ultimaPeliculaVista, setUltimaPeliculaVista] = useState([]);
+  const [ultimaSerieVista, setUltimaSerieVista] = useState([]);
+  const [ultimaPeliculaPendiente, setUltimaPeliculaPendiente] = useState([]);
+  const [ultimaSeriePendiente, setUltimaSeriePendiente] = useState([]);
+  const [ultimaPeliculaFavorita, setUltimaPeliculaFavorita] = useState([]);
+  const [ultimaSerieFavorita, setUltimaSerieFavorita] = useState([]);
 
   useEffect(() => {
     //Petición que me devuelve los datos del usuario
@@ -83,6 +89,60 @@ const Perfil = (idSession) => {
       setListas(data);
     };
 
+    //Última película vista
+    const getUltimaPeliculaVista = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/account/${datos.id}/rated/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${peliculasVistas.total_pages}`
+      );
+      const data = await response.json();
+      setUltimaPeliculaVista(data);
+    };
+
+    //Última serie vista
+    const getUltimaSerieVista = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/account/${datos.id}/rated/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${seriesVistas.total_pages}`
+      );
+      const data = await response.json();
+      setUltimaSerieVista(data);
+    };
+
+    //Última película favorita
+    const getUltimaPeliculaFavorita = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/account/${datos.id}/favorite/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${peliculasFavoritas.total_pages}`
+      );
+      const data = await response.json();
+      setUltimaPeliculaFavorita(data);
+    };
+
+    //Última serie favorita
+    const getUltimaSerieFavorita = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/account/${datos.id}/favorite/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${seriesFavoritas.total_pages}`
+      );
+      const data = await response.json();
+      setUltimaSerieFavorita(data);
+    };
+
+    //Última película pendiente
+    const getUltimaPeliculaPendiente = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/account/${datos.id}/watchlist/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${peliculasPendientes.total_pages}`
+      );
+      const data = await response.json();
+      setUltimaPeliculaPendiente(data);
+    };
+
+    //Última serie pendiente
+    const getUltimaSeriePendiente = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/account/${datos.id}/watchlist/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${seriesPendientes.total_pages}`
+      );
+      const data = await response.json();
+      setUltimaSeriePendiente(data);
+    };
+
     getDatos();
     getPeliculasVistas();
     getSeriesVistas();
@@ -91,7 +151,22 @@ const Perfil = (idSession) => {
     getPeliculasPendientes();
     getSeriesPendientes();
     getListas();
-  }, [idSession, datos.id]);
+    getUltimaPeliculaVista();
+    getUltimaSerieVista();
+    getUltimaPeliculaFavorita();
+    getUltimaSerieFavorita();
+    getUltimaPeliculaPendiente();
+    getUltimaSeriePendiente();
+  }, [
+    idSession,
+    datos.id,
+    peliculasVistas.total_pages,
+    seriesVistas.total_pages,
+    peliculasFavoritas.total_pages,
+    seriesFavoritas.total_pages,
+    peliculasPendientes.total_pages,
+    seriesPendientes.total_pages,
+  ]);
 
   return {
     datos,
@@ -102,6 +177,12 @@ const Perfil = (idSession) => {
     peliculasPendientes,
     seriesPendientes,
     listas,
+    ultimaPeliculaVista,
+    ultimaSerieVista,
+    ultimaPeliculaFavorita,
+    ultimaSerieFavorita,
+    ultimaPeliculaPendiente,
+    ultimaSeriePendiente,
   };
 };
 
