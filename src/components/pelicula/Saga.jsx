@@ -15,7 +15,7 @@ export default function Saga({ saga }) {
                   height: "50vh",
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950 to-transparent"></div>
                 <div className="absolute inset-0 p-4 flex flex-col justify-end">
                   <h3 className="text-xl font-bold text-white">{saga.name}</h3>
                 </div>
