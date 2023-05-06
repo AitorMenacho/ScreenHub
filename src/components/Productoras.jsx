@@ -3,17 +3,17 @@ import Link from "next/link";
 
 export default function Productoras({ productoras }) {
   return (
-    <div className="container mx-auto my-5">
-      <h2 className="text-xl font-bold mb-3">Productoras</h2>
+    <div className="container mx-auto my-5 bg-stone-800 p-5 mt-5 rounded-xl">
+      <h2 className="text-xl font-bold mb-5">Productoras</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
         {productoras &&
           productoras.map((company) => (
             <Link
               key={company.id}
-              href="/company/[id]"
-              as={`/company/${company.id}`}
+              href="/productora/[id]"
+              as={`/productora/${company.id}`}
             >
-              <div className="w-40 h-40 flex flex-col object-cover items-center bg-yellow-500 text-stone-950 justify-center p-3 rounded-xl">
+              <div className="w-40 h-40 flex flex-col items-center border-slate-950 border-2 rounded-xl justify-center p-3 hover:border-yellow-400 transition-all duration-500">
                 {company.logo_path == null ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -36,10 +36,12 @@ export default function Productoras({ productoras }) {
                   </svg>
                 ) : (
                   <Image
-                    src={`https://image.tmdb.org/t/p/original${company.logo_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
                     alt={company.name}
                     width={200}
                     height={200}
+                    className="object-contain"
+                    style={{ maxHeight: "6vh" }}
                   />
                 )}
                 <p className="text-center font-semibold">{company.name}</p>

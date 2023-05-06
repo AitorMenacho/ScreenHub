@@ -12,7 +12,7 @@ export default function Resultado() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const generosFormateados = Array.isArray(genero) ? genero.join(",") : genero;
+  const generosFormateados = Array.isArray(genero) ? genero.join("|") : genero;
 
   const valoracionNumerica =
     valoracion === "calidad" ? 7 : valoracion === "normal" ? 5 : 0;
@@ -25,8 +25,6 @@ export default function Resultado() {
     page,
     tipo
   );
-
-  console.log(resultado)
 
   return (
     <>
