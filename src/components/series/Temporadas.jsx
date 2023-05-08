@@ -18,7 +18,7 @@ export default function Temporadas({ temporada, idSerie }) {
                 <Image
                   className="w-50 h-50 object-cover rounded-t-lg"
                   src={`https://image.tmdb.org/t/p/original${season.poster_path}`}
-                  alt={season.name}
+                  alt={`Portada de la temporada`}
                   width={200}
                   height={200}
                 />

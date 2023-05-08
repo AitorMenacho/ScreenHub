@@ -92,7 +92,7 @@ const Perfil = (idSession) => {
     //Última película vista
     const getUltimaPeliculaVista = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/account/${datos.id}/rated/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${peliculasVistas.total_pages}`
+        `https://api.themoviedb.org/3/account/${datos.id}/rated/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.desc&page=1`
       );
       const data = await response.json();
       setUltimaPeliculaVista(data);
@@ -101,7 +101,7 @@ const Perfil = (idSession) => {
     //Última serie vista
     const getUltimaSerieVista = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/account/${datos.id}/rated/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${seriesVistas.total_pages}`
+        `https://api.themoviedb.org/3/account/${datos.id}/rated/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.desc&page=1`
       );
       const data = await response.json();
       setUltimaSerieVista(data);
@@ -110,7 +110,7 @@ const Perfil = (idSession) => {
     //Última película favorita
     const getUltimaPeliculaFavorita = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/account/${datos.id}/favorite/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${peliculasFavoritas.total_pages}`
+        `https://api.themoviedb.org/3/account/${datos.id}/favorite/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.desc&page=1`
       );
       const data = await response.json();
       setUltimaPeliculaFavorita(data);
@@ -119,7 +119,7 @@ const Perfil = (idSession) => {
     //Última serie favorita
     const getUltimaSerieFavorita = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/account/${datos.id}/favorite/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${seriesFavoritas.total_pages}`
+        `https://api.themoviedb.org/3/account/${datos.id}/favorite/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.desc&page=1`
       );
       const data = await response.json();
       setUltimaSerieFavorita(data);
@@ -128,7 +128,7 @@ const Perfil = (idSession) => {
     //Última película pendiente
     const getUltimaPeliculaPendiente = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/account/${datos.id}/watchlist/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${peliculasPendientes.total_pages}`
+        `https://api.themoviedb.org/3/account/${datos.id}/watchlist/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.desc&page=1`
       );
       const data = await response.json();
       setUltimaPeliculaPendiente(data);
@@ -137,7 +137,7 @@ const Perfil = (idSession) => {
     //Última serie pendiente
     const getUltimaSeriePendiente = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/account/${datos.id}/watchlist/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.asc&page=${seriesPendientes.total_pages}`
+        `https://api.themoviedb.org/3/account/${datos.id}/watchlist/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${idSession}&language=es-ES&sort_by=created_at.desc&page=1`
       );
       const data = await response.json();
       setUltimaSeriePendiente(data);

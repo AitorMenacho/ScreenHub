@@ -1,38 +1,35 @@
+import Image from "next/image";
 import Link from "next/link";
+import { Puntuacion } from "../Puntuacion";
+import { Tarjeta } from "../resultados/Tarjeta";
+import { useState } from "react";
 
 export default function Saga({ saga }) {
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="container mx-auto my-5">
-      <h2 className="text-4xl font-bold mb-3">Saga</h2>
-      <div className="flex flex-wrap">
-        <div className="w-full md:w-1/3 lg:w-1/4 p-2">
-          {saga && saga.poster_path ? (
-            <Link href={`/Sagas/${saga.id}`}>
-              <div
-                className="relative bg-cover bg-center bg-no-repeat bg-stone-950 hover:bg-transparent transition-all duration-500 bg-opacity-50 bg-blend-darken rounded-lg w-full"
-                style={{
-                  backgroundImage: `url('https://image.tmdb.org/t/p/original${saga.poster_path}')`,
-                  height: "50vh",
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950 to-transparent"></div>
-                <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                  <h3 className="text-xl font-bold text-white">{saga.name}</h3>
+      <h2 className="text-xl font-bold mb-3">{saga.name}</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {saga &&
+          saga.parts &&
+          saga.parts.map((saga) => (
+            <div className="relative" key={saga.id}>
+              <Link href={`/Peliculas/${saga.id}`}>
+                <div className="flex flex-col items-center">
+                  <Puntuacion puntuacion={saga.vote_average} />
+                  <Tarjeta
+                    id={saga.id}
+                    tipo="Peliculas"
+                    nombre={saga.title || saga.name}
+                    imagen={saga.poster_path}
+                    loading={loading}
+                    setLoading={setLoading}
+                  />
                 </div>
-              </div>
-            </Link>
-          ) : (
-            <div
-              className="relative bg-cover bg-center bg-no-repeat bg-gray-900 bg-opacity-50 bg-blend-darken rounded-lg"
-              style={{
-                backgroundImage: `url('https://via.placeholder.com/300x450/000000/FFFFFF/?text=Sin%20saga')`,
-                height: "40vh",
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent hover:bg-gradient-to-t hover:from-yellow-400 hover:to-transparent"></div>
+              </Link>
             </div>
-          )}
-        </div>
+          ))}
       </div>
     </div>
   );

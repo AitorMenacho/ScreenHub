@@ -31,7 +31,7 @@ const Series = (idSerie) => {
       );
 
       const data = await response.json();
-      setTrailer(data.results[0]);
+      setTrailer(data && data.results && data.results[0]);
     };
 
     const getRecomendation = async () => {

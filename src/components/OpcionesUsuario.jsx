@@ -14,7 +14,7 @@ export default function OpcionesUsuario({
   const [favorita, setFavorita] = useState(false);
   const [vista, setVista] = useState(false);
   const [rating, setRating] = useState(1);
-  const [Pelicula, setPelicula] = useState({}); //[idPelicula.idPelicula
+  const [Pelicula, setPelicula] = useState("");
 
   const { userId, sessionId } = useContext(UserContext);
 
@@ -58,7 +58,7 @@ export default function OpcionesUsuario({
     };
 
     check();
-  }, [Pelicula, sessionId, userId, tipo]);
+  }, [Pelicula, sessionId, tipo]);
 
   useEffect(() => {
     if (valorar) {

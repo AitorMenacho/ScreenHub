@@ -11,6 +11,8 @@ import Pelicula from "../api/Pelicula";
 import Saga from "@/components/pelicula/Saga";
 import { Datos } from "@/components/Datos";
 import { ImagenPortada } from "@/components/ImagenPortada";
+import SagasApi from "../api/Sagas";
+import Link from "next/link";
 
 const Peliculas = () => {
   const router = useRouter();
@@ -18,6 +20,8 @@ const Peliculas = () => {
 
   const { movie, actors, trailer, recomendation, reviews, providers } =
     Pelicula(id);
+
+  const { saga } = SagasApi(movie.belongs_to_collection?.id);
 
   if (!movie) return null;
 
@@ -33,6 +37,7 @@ const Peliculas = () => {
         }}
       >
         <div className="container columns-2 z-10">
+          
           <div className="col-span-2">
             <ImagenPortada poster={movie.poster_path} titulo={movie.title} />
           </div>
@@ -52,8 +57,8 @@ const Peliculas = () => {
       </div>
       <Providers providers={providers?.ES} />
       <Actors actors={actors} idSerie={id} tipo={"Peliculas"} />
-      <Trailer trailer={trailer[0]} />
-      <Saga saga={movie.belongs_to_collection} />
+      <Trailer trailer={trailer && trailer[0]} />
+      <Saga saga={saga} />
       <Productoras productoras={movie.production_companies} />
       <Reviews reviews={reviews} />
       <Recommendations recomendation={recomendation} tipo={"Peliculas"} />

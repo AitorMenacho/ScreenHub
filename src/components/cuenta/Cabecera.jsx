@@ -12,8 +12,6 @@ export default function Cabecera({
   backgroundImage,
   fotoPerfil,
 }) {
-  console.log(peliculasVistas);
-
   return (
     <>
       <div
@@ -41,27 +39,87 @@ export default function Cabecera({
             <div className="container columns-6 mt-5">
               <Informacion
                 titulo={"Última película vista"}
-                pelicula={peliculasVistas}
+                portada={
+                  peliculasVistas &&
+                  peliculasVistas.results &&
+                  peliculasVistas.results[0].poster_path
+                }
+                tipo={"Peliculas"}
+                pelicula={
+                  peliculasVistas &&
+                  peliculasVistas.results &&
+                  peliculasVistas.results[0].id
+                }
               />
               <Informacion
                 titulo={"Última serie vista"}
-                pelicula={seriesVistas}
+                portada={
+                  seriesVistas &&
+                  seriesVistas.results &&
+                  seriesVistas.results[0].poster_path
+                }
+                tipo={"Series"}
+                pelicula={
+                  seriesVistas &&
+                  seriesVistas.results &&
+                  seriesVistas.results[0].id
+                }
               />
               <Informacion
                 titulo={"Última película pendiente"}
-                pelicula={peliculasPendientes}
+                portada={
+                  peliculasPendientes &&
+                  peliculasPendientes.results &&
+                  peliculasPendientes.results[0].poster_path
+                }
+                tipo={"Peliculas"}
+                pelicula={
+                  peliculasPendientes &&
+                  peliculasPendientes.results &&
+                  peliculasPendientes.results[0].id
+                }
               />
               <Informacion
                 titulo={"Última serie pendiente"}
-                pelicula={seriesPendientes}
+                portada={
+                  seriesPendientes &&
+                  seriesPendientes.results &&
+                  seriesPendientes.results[0].poster_path
+                }
+                tipo={"Series"}
+                pelicula={
+                  seriesPendientes &&
+                  seriesPendientes.results &&
+                  seriesPendientes.results[0].id
+                }
               />
               <Informacion
                 titulo={"Última película favorita"}
-                pelicula={peliculasFavoritas}
+                portada={
+                  peliculasFavoritas &&
+                  peliculasFavoritas.results &&
+                  peliculasFavoritas.results[0].poster_path
+                }
+                tipo={"Peliculas"}
+                pelicula={
+                  peliculasFavoritas &&
+                  peliculasFavoritas.results &&
+                  peliculasFavoritas.results[0].id
+                }
               />
               <Informacion
                 titulo={"Última serie favorita"}
-                pelicula={seriesFavoritas}
+                portada={
+                  seriesFavoritas &&
+                  seriesFavoritas.results &&
+                  seriesFavoritas.results[0].poster_path
+                }
+                tipo={"Series"}
+                pelicula={
+                  seriesFavoritas &&
+                  seriesFavoritas.results &&
+                  seriesFavoritas.results[0].id
+                }
               />
             </div>
           </div>

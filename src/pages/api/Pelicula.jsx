@@ -7,7 +7,6 @@ const Pelicula = (idPelicula) => {
   const [recomendation, setRecomendation] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [providers, setProviders] = useState([]);
-
   useEffect(() => {
     // Esta petición trae la información de la película
     const getMovie = async () => {

@@ -35,7 +35,7 @@ export function Tarjeta({ id, tipo, nombre, imagen, loading, setLoading }) {
         </div>
         <Image
           src={`https://image.tmdb.org/t/p/w500${imagen}`}
-          alt={nombre}
+          alt={`Portada de ${nombre}`}
           className="w-full object-cover object-center"
           style={{
             filter: loading ? "blur(5px)" : "none",
