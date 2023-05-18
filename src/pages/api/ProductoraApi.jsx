@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function ProductoraApi({ id }) {
+export default function ProductoraApi(id) {
   const [peliculas, setPeliculas] = useState([]);
   const [series, setSeries] = useState([]);
   const [datos, setDatos] = useState([]);

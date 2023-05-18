@@ -15,8 +15,6 @@ export default function Productora() {
   let fotoPeli = "";
   let posicion = null;
 
-  console.log(datos)
-
   const verTodasPeliculas = () => {
     router.push(`/Persona/${id}/Peliculas`);
   };

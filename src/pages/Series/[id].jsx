@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 import Providers from "@/components/Providers";
 import Actors from "@/components/Actors";
