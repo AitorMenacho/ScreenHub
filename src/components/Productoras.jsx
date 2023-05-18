@@ -13,7 +13,7 @@ export default function Productoras({ productoras }) {
               href="/productora/[id]"
               as={`/productora/${company.id}`}
             >
-              <div className="w-40 h-40 flex flex-col items-center border-slate-950 border-2 rounded-xl justify-center p-3 hover:border-yellow-400 transition-all duration-500">
+              <div className="w-40 h-40 flex flex-col items-center bg-gradient-to-t from-stone-900 rounded-xl justify-center p-3 hover:bg-white transition-all duration-500">
                 {company.logo_path == null ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

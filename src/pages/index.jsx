@@ -4,8 +4,20 @@ import logoSolo from "../../public/logoSolo.svg";
 import Section from "@/components/Section";
 import FeatureSection from "@/components/FeatureSection";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useContext, useEffect } from "react";
+import { UserContext } from "./_app";
 
-export default function index() {
+export default function Index() {
+  const router = useRouter();
+  const { sessionId } = useContext(UserContext);
+
+  useEffect(() => {
+    if (sessionId) {
+      router.push("/home");
+    }
+  }, [sessionId, router]);
+
   return (
     <>
       <div className="flex items-center justify-center h-screen bg-stone-950">

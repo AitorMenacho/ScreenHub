@@ -12,7 +12,14 @@ const Cuenta = () => {
   const [series, setSeries] = useState([]);
   const [fotoPerfil, setFotoPerfil] = useState("");
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [loading, setLoading] = useState(true);
 
+  // Ponemos loading en true para que se muestre el spinner
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+
+  // Sacamos los datos del usuario
   const {
     datos,
     peliculasVistas,
@@ -27,7 +34,7 @@ const Cuenta = () => {
     ultimaSeriePendiente,
     ultimaPeliculaFavorita,
     ultimaSerieFavorita,
-  } = Perfil(sessionId);
+  } = Perfil(sessionId, setLoading);
 
   useEffect(() => {
     if (datos.id) {
@@ -89,19 +96,27 @@ const Cuenta = () => {
 
   return (
     <>
-      <Cabecera
-        fotoPerfil={fotoPerfil}
-        backgroundImage={backgroundImage}
-        nombre={datos.name}
-        peliculasVistas={ultimaPeliculaVista}
-        seriesVistas={ultimaSerieVista}
-        peliculasPendientes={ultimaPeliculaPendiente}
-        seriesPendientes={ultimaSeriePendiente}
-        peliculasFavoritas={ultimaPeliculaFavorita}
-        seriesFavoritas={ultimaSerieFavorita}
-      />
-      <Filtrado setFilter={setFilter} username={username} />
-      <ResultadoFiltrado peliculas={peliculas} series={series} />
+      {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-400"></div>
+        </div>
+      ) : (
+        <>
+          <Cabecera
+            fotoPerfil={fotoPerfil}
+            backgroundImage={backgroundImage}
+            nombre={datos.name}
+            peliculasVistas={ultimaPeliculaVista}
+            seriesVistas={ultimaSerieVista}
+            peliculasPendientes={ultimaPeliculaPendiente}
+            seriesPendientes={ultimaSeriePendiente}
+            peliculasFavoritas={ultimaPeliculaFavorita}
+            seriesFavoritas={ultimaSerieFavorita}
+          />
+          <Filtrado setFilter={setFilter} username={username} />
+          <ResultadoFiltrado peliculas={peliculas} series={series} />
+        </>
+      )}
     </>
   );
 };

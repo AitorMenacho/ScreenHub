@@ -32,7 +32,9 @@ export default function Footer() {
           </li>
           <li>
             <Link
-              href="#"
+              href="https://github.com/AitorMenacho/ScreenHub"
+              target="_blank"
+              rel="noreferrer"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               GitHub
