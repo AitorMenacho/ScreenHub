@@ -6,7 +6,7 @@ import { ImagenPortada } from "@/components/ImagenPortada";
 
 export default function Productora() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = router?.query;
 
   const { datos, peliculas, series } = ProductoraApi(id);
 
