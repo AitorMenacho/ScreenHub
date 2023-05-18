@@ -12,7 +12,6 @@ import Saga from "@/components/pelicula/Saga";
 import { Datos } from "@/components/Datos";
 import { ImagenPortada } from "@/components/ImagenPortada";
 import SagasApi from "../api/Sagas";
-import Link from "next/link";
 
 const Peliculas = () => {
   const router = useRouter();
@@ -37,7 +36,6 @@ const Peliculas = () => {
         }}
       >
         <div className="container columns-2 z-10">
-          
           <div className="col-span-2">
             <ImagenPortada poster={movie.poster_path} titulo={movie.title} />
           </div>
