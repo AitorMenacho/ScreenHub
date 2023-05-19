@@ -3,7 +3,7 @@
 ![](https://img.shields.io/github/package-json/dependency-version/AitorMenacho/ScreenHub/react?color=61DAFB&logo=React)
 ![](https://img.shields.io/github/package-json/dependency-version/AitorMenacho/ScreenHub/tailwindcss?color=38B2AC&logo=Tailwindcss)
 ![](https://img.shields.io/github/package-json/dependency-version/AitorMenacho/ScreenHub/eslint?color=4B32C3&logo=eslint)
-![](https://img.shields.io/website?down_color=darkred&down_message=Offline&logo=vercel&up_color=darkgreen&up_message=Online&url=https%3A%2F%2Fscreen-hub.vercel.app%2F)
+![](https://img.shields.io/website?down_color=darkred&down_message=Offline&logo=heroku&up_color=darkgreen&up_message=Online&url=https%3A%2F%2Fscreenhub.herokuapp.com/%2F)
 ![peso](https://img.shields.io/github/languages/code-size/AitorMenacho/ScreenHub?label=Size)
 
 ScreenHub es una plataforma para cinéfilos y amantes de las series donde podrás encontrar todo lo relacionado con tus películas y series favoritas. Con ScreenHub podrás buscar, descubrir y organizar tus contenidos preferidos, ver detalles sobre cada título, añadirlos a tus listas personalizadas, recibir recomendaciones basadas en tus gustos y más.
@@ -16,7 +16,7 @@ ScreenHub es una plataforma para cinéfilos y amantes de las series donde podrá
 
 ## Cómo utilizar :construction: Este proyecto está en construcción :construction:
 
-Puedes disfrutar de las funciones realizadas hasta el momento simplemente entrando en la web [ScreenHub](https://screen-hub.vercel.app/)
+Puedes disfrutar de las funciones realizadas hasta el momento simplemente entrando en la web [ScreenHub](https://screenhub.herokuapp.com/)
 
 ## :hammer: Funcionalidades del proyecto
 
