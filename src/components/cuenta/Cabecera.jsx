@@ -41,84 +41,84 @@ export default function Cabecera({
                 titulo={"Última película vista"}
                 portada={
                   peliculasVistas &&
-                  peliculasVistas.results &&
-                  peliculasVistas.results[0].poster_path
+                  peliculasVistas.totalResults &&
+                  peliculasVistas.totalResults[0].poster_path
                 }
                 tipo={"Peliculas"}
                 pelicula={
                   peliculasVistas &&
-                  peliculasVistas.results &&
-                  peliculasVistas.results[0].id
+                  peliculasVistas.totalResults &&
+                  peliculasVistas.totalResults[0].id
                 }
               />
               <Informacion
                 titulo={"Última serie vista"}
                 portada={
                   seriesVistas &&
-                  seriesVistas.results &&
-                  seriesVistas.results[0].poster_path
+                  seriesVistas.totalResults &&
+                  seriesVistas.totalResults[0].poster_path
                 }
                 tipo={"Series"}
                 pelicula={
                   seriesVistas &&
-                  seriesVistas.results &&
-                  seriesVistas.results[0].id
+                  seriesVistas.totalResults &&
+                  seriesVistas.totalResults[0].id
                 }
               />
               <Informacion
                 titulo={"Última película pendiente"}
                 portada={
                   peliculasPendientes &&
-                  peliculasPendientes.results &&
-                  peliculasPendientes.results[0].poster_path
+                  peliculasPendientes.totalResults &&
+                  peliculasPendientes.totalResults[0].poster_path
                 }
                 tipo={"Peliculas"}
                 pelicula={
                   peliculasPendientes &&
-                  peliculasPendientes.results &&
-                  peliculasPendientes.results[0].id
+                  peliculasPendientes.totalResults &&
+                  peliculasPendientes.totalResults[0].id
                 }
               />
               <Informacion
                 titulo={"Última serie pendiente"}
                 portada={
                   seriesPendientes &&
-                  seriesPendientes.results &&
-                  seriesPendientes.results[0].poster_path
+                  seriesPendientes.totalResults &&
+                  seriesPendientes.totalResults[0].poster_path
                 }
                 tipo={"Series"}
                 pelicula={
                   seriesPendientes &&
-                  seriesPendientes.results &&
-                  seriesPendientes.results[0].id
+                  seriesPendientes.totalResults &&
+                  seriesPendientes.totalResults[0].id
                 }
               />
               <Informacion
                 titulo={"Última película favorita"}
                 portada={
                   peliculasFavoritas &&
-                  peliculasFavoritas.results &&
-                  peliculasFavoritas.results[0].poster_path
+                  peliculasFavoritas.totalResults &&
+                  peliculasFavoritas.totalResults[0].poster_path
                 }
                 tipo={"Peliculas"}
                 pelicula={
                   peliculasFavoritas &&
-                  peliculasFavoritas.results &&
-                  peliculasFavoritas.results[0].id
+                  peliculasFavoritas.totalResults &&
+                  peliculasFavoritas.totalResults[0].id
                 }
               />
               <Informacion
                 titulo={"Última serie favorita"}
                 portada={
                   seriesFavoritas &&
-                  seriesFavoritas.results &&
-                  seriesFavoritas.results[0].poster_path
+                  seriesFavoritas.totalResults &&
+                  seriesFavoritas.totalResults[0].poster_path
                 }
                 tipo={"Series"}
                 pelicula={
                   seriesFavoritas &&
-                  seriesFavoritas.results &&
-                  seriesFavoritas.results[0].id
+                  seriesFavoritas.totalResults &&
+                  seriesFavoritas.totalResults[0].id
                 }
               />
             </div>

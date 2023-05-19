@@ -28,12 +28,6 @@ const Cuenta = () => {
     seriesFavoritas,
     peliculasPendientes,
     seriesPendientes,
-    ultimaPeliculaVista,
-    ultimaSerieVista,
-    ultimaPeliculaPendiente,
-    ultimaSeriePendiente,
-    ultimaPeliculaFavorita,
-    ultimaSerieFavorita,
   } = Perfil(sessionId, setLoading);
 
   useEffect(() => {
@@ -43,16 +37,16 @@ const Cuenta = () => {
 
     // Sacamos un número aleatorio para sacar una foto favorita aleatoria
     const fotoPeli =
-      peliculasFavoritas && peliculasFavoritas.total_results > 0
-        ? Math.floor(Math.random() * (peliculasFavoritas.total_results - 1))
+      peliculasFavoritas && peliculasFavoritas.length > 0
+        ? Math.floor(Math.random() * (peliculasFavoritas.length - 1))
         : 0;
 
     // Sacamos una foto aleatoria de las series favoritas
     setBackgroundImage(
       peliculasFavoritas &&
-        peliculasFavoritas.results &&
-        peliculasFavoritas.results.length > 0
-        ? `url('https://image.tmdb.org/t/p/original${peliculasFavoritas.results[fotoPeli]?.backdrop_path}')`
+        peliculasFavoritas.totalResults &&
+        peliculasFavoritas.totalResults.length > 0
+        ? `url('https://image.tmdb.org/t/p/original${peliculasFavoritas.totalResults[fotoPeli]?.backdrop_path}')`
         : "none"
     );
 
@@ -61,27 +55,27 @@ const Cuenta = () => {
 
   useEffect(() => {
     if (filter === "peliculasVistas") {
-      setPeliculas(peliculasVistas.results);
+      setPeliculas(peliculasVistas.totalResults);
       setSeries([]);
     }
     if (filter === "peliculasFavoritas") {
-      setPeliculas(peliculasFavoritas.results);
+      setPeliculas(peliculasFavoritas.totalResults);
       setSeries([]);
     }
     if (filter === "peliculasPendientes") {
-      setPeliculas(peliculasPendientes.results);
+      setPeliculas(peliculasPendientes.totalResults);
       setSeries([]);
     }
     if (filter === "seriesVistas") {
-      setSeries(seriesVistas.results);
+      setSeries(seriesVistas.totalResults);
       setPeliculas([]);
     }
     if (filter === "seriesFavoritas") {
-      setSeries(seriesFavoritas.results);
+      setSeries(seriesFavoritas.totalResults);
       setPeliculas([]);
     }
     if (filter === "seriesPendientes") {
-      setSeries(seriesPendientes.results);
+      setSeries(seriesPendientes.totalResults);
       setPeliculas([]);
     }
   }, [
@@ -106,12 +100,12 @@ const Cuenta = () => {
             fotoPerfil={fotoPerfil}
             backgroundImage={backgroundImage}
             nombre={datos.name}
-            peliculasVistas={ultimaPeliculaVista}
-            seriesVistas={ultimaSerieVista}
-            peliculasPendientes={ultimaPeliculaPendiente}
-            seriesPendientes={ultimaSeriePendiente}
-            peliculasFavoritas={ultimaPeliculaFavorita}
-            seriesFavoritas={ultimaSerieFavorita}
+            peliculasVistas={peliculasVistas}
+            seriesVistas={seriesVistas}
+            peliculasPendientes={peliculasPendientes}
+            seriesPendientes={seriesPendientes}
+            peliculasFavoritas={peliculasFavoritas}
+            seriesFavoritas={seriesFavoritas}
           />
           <Filtrado setFilter={setFilter} username={username} />
           <ResultadoFiltrado peliculas={peliculas} series={series} />

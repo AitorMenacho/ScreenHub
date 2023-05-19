@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Dialog, Popover } from "@headlessui/react";
+import { Dialog, Menu, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import logo from "../../public/logo.svg";
@@ -9,6 +9,7 @@ import { UserContext } from "@/pages/_app";
 
 export default function HeaderIniciado() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
 
   const router = useRouter();
@@ -98,13 +99,59 @@ export default function HeaderIniciado() {
           </button>
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div
+          className="hidden lg:flex lg:flex-1 lg:justify-end"
+          onMouseOver={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
+        >
           <Link
             href="/Cuenta/Cuenta"
             className="text-sm font-semibold leading-6 text-white"
           >
             Hola, {username}
           </Link>
+          <Menu className="z-50">
+            <Transition
+              show={menuOpen}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items>
+                <div className="absolute right-0 w-44 mt-7 origin-top-right bg-stone-950 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="py-1">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="/Estadisticas/Series"
+                          className={`${
+                            active ? "bg-stone-800 text-white" : "text-white"
+                          } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                        >
+                          Estadísticas series
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="/Estadisticas/Peliculas"
+                          className={`${
+                            active ? "bg-stone-800 text-white" : "text-white"
+                          } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                        >
+                          Estadísticas películas
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </div>
       </nav>
       <Dialog
@@ -174,9 +221,24 @@ export default function HeaderIniciado() {
                 <Link
                   href="/Cuenta/Cuenta"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white"
-                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Hola, {username}
+                </Link>
+              </div>
+              <div className="py-6">
+                <Link
+                  href="/Estadisticas/Series"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white"
+                >
+                  Estadísticas series
+                </Link>
+              </div>
+              <div className="py-6">
+                <Link
+                  href="/Estadisticas/Peliculas"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white"
+                >
+                  Estadísticas películas
                 </Link>
               </div>
             </div>
