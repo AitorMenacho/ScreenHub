@@ -1,66 +1,18 @@
 import { useContext, useState } from "react";
 import Perfil from "../api/Perfil";
 import { UserContext } from "../_app";
-import Chart from "chart.js/auto";
-import { Doughnut } from "react-chartjs-2";
+import GraficoBarras from "@/components/graficos/GraficoBarrasSeries";
+import GraficoTartaSeries from "@/components/graficos/GraficoTartaSeries";
+import GraficoBarrasSeries from "@/components/graficos/GraficoBarrasSeries";
 
 const Series = () => {
   const { sessionId } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
-  const [generosVistasTotal, setGenerosVistasTotal] = useState([]);
-  const [generosPendientesTotal, setGenerosPendientesTotal] = useState([]);
-  const [generosFavoritasTotal, setGenerosFavoritasTotal] = useState([]);
 
   const { seriesVistas, seriesPendientes, seriesFavoritas } = Perfil(
     sessionId,
     setLoading
   );
-
-  // Sacamos los generos de las series vistas
-  const generosVistas = seriesVistas?.totalResults?.map((serie) => {
-    return serie.genre_ids;
-  });
-
-  // Sacamos los generos de las series pendientes
-  const generosPendientes = seriesPendientes?.totalResults?.map((serie) => {
-    return serie.genre_ids;
-  });
-
-  // Sacamos los generos de las series favoritas
-  const generosFavoritas = seriesFavoritas?.totalResults?.map((serie) => {
-    return serie.genre_ids;
-  });
-
-  // Sacamos los generos de las series vistas y los sumamos para sacar el total de cada uno y lo guardamos en un objeto
-  const generosVistasSumados = generosVistas?.reduce((acc, genero) => {
-    genero.forEach((genero) => {
-      if (acc[genero]) {
-        acc[genero].totalResults++;
-      } else {
-        acc[genero] = {
-          totalResults: 1,
-          name: genero,
-        };
-      }
-    });
-
-    setGenerosVistasTotal(acc);
-  }, {});
-
-  console.log(generosVistasTotal);
-
-  const [chartData, setChartData] = useState({
-    labels: generosVistasTotal?.map((genero) => genero.name),
-    datasets: [
-      {
-        label: "Users Gained ",
-        data: generosVistasTotal?.map((genero) => genero.totalResults),
-        backgroundColor: ["#50AF95", "#f3ba2f", "#2a71d0"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
 
   return (
     <>
@@ -69,7 +21,55 @@ const Series = () => {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-400"></div>
         </div>
       ) : (
-        <>{<Doughnut data={chartData} />}</>
+        <>
+          <div className="flex flex-col items-center justify-center">
+            <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
+              <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                Categorías vistas
+              </h2>
+              <div className="flex flex-wrap justify-between">
+                <GraficoTartaSeries
+                  seriesVistas={seriesVistas.totalResults}
+                  titulo={"Cantidad de series por categoría"}
+                />
+                <GraficoBarrasSeries
+                  series={seriesVistas.totalResults}
+                  titulo={"Cantidad de series por año"}
+                />
+              </div>
+            </div>
+            <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
+              <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                Categorías pendientes
+              </h2>
+              <div className="flex flex-wrap justify-between">
+                <GraficoTartaSeries
+                  seriesVistas={seriesPendientes.totalResults}
+                  titulo={"Cantidad de series por categoría"}
+                />
+                <GraficoBarrasSeries
+                  series={seriesPendientes.totalResults}
+                  titulo={"Cantidad de series por año"}
+                />
+              </div>
+            </div>
+            <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
+              <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                Categorías vistas
+              </h2>
+              <div className="flex flex-wrap justify-between">
+                <GraficoTartaSeries
+                  seriesVistas={seriesFavoritas.totalResults}
+                  titulo={"Cantidad de series por categoría"}
+                />
+                <GraficoBarrasSeries
+                  series={seriesFavoritas.totalResults}
+                  titulo={"Cantidad de series por año"}
+                />
+              </div>
+            </div>
+          </div>
+        </>
       )}
     </>
   );

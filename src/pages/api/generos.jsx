@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Generos() {
+const Generos = () => {
   const [generosSeries, setGenerosSeries] = useState([]);
   const [generosPeliculas, setGenerosPeliculas] = useState([]);
 
@@ -25,7 +25,9 @@ export default function Generos() {
 
     gerGenerosSeries();
     gerGenerosPeliculas();
-  });
+  }, []);
 
   return { generosSeries, generosPeliculas };
-}
+};
+
+export default Generos;

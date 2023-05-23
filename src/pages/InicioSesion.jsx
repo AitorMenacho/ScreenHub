@@ -2,16 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import IniciarSesion from "./api/IniciarSesion";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export default function InicioSesion() {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [submit, setSubmit] = useState(false);
 
+  const MySwal = withReactContent(Swal);
+
   const { sessionId } = IniciarSesion(usuario, password);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setSubmit(true);
   };
 

@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <UserContext.Provider
-        value={{ isLoggedIn, username, sessionId, userId, setUserId }}
+        value={{ isLoggedIn, setIsLoggedIn, username, setUsername, sessionId, setSessionId, userId, setUserId }}
       >
         {isLoggedIn ? <HeaderIniciado /> : <Header />}
         <Component {...pageProps} />

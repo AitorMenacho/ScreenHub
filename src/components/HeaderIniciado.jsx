@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { use, useContext, useState } from "react";
 import { Dialog, Menu, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -6,6 +6,7 @@ import logo from "../../public/logo.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { UserContext } from "@/pages/_app";
+import { set } from "date-fns";
 
 export default function HeaderIniciado() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,7 +32,17 @@ export default function HeaderIniciado() {
     setMobileMenuOpen(false);
   };
 
-  const { username } = useContext(UserContext);
+  const { username, setUserId, setSessionId, setUsername, setIsLoggedIn } =
+    useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setUserId("");
+    setSessionId("");
+    setUsername("");
+    setIsLoggedIn(false);
+    router.push("/");
+  };
 
   return (
     <header className="bg-stone-950">
@@ -147,6 +158,20 @@ export default function HeaderIniciado() {
                         </Link>
                       )}
                     </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          onClick={handleLogout}
+                          className={`${
+                            active
+                              ? "bg-stone-800 text-red-700"
+                              : "text-red-700"
+                          } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                        >
+                          cerrar sesión
+                        </button>
+                      )}
+                    </Menu.Item>
                   </div>
                 </div>
               </Menu.Items>
@@ -240,6 +265,17 @@ export default function HeaderIniciado() {
                 >
                   Estadísticas películas
                 </Link>
+              </div>
+              <div className="py-6">
+                <button
+                  onClick={() => {
+                    localStorage.clear();
+                    router.push("/");
+                  }}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-red-700"
+                >
+                  Cerrar sesión
+                </button>
               </div>
             </div>
           </div>
