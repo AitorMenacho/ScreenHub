@@ -1,23 +1,28 @@
-import Image from "next/image";
+import HomeApi from "./api/homeApi";
+import Clasificacion from "@/components/home/Clasificacion";
 
 export default function Home() {
+  const { mejoresPeliculasHoy, mejoresSeriesHoy, mejoresActoresHoy } =
+    HomeApi();
+
   return (
     <>
-      <div className="container mx-auto min-h-screen">
-        <div className="flex min-h-full h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 items-center">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <Image
-              className="mx-auto h-32 w-auto"
-              src="/logoSolo.svg"
-              alt="Your Company"
-              width={48}
-              height={48}
-            />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
-              Home
-            </h2>
-          </div>
-        </div>
+      <div className="flex flex-col justify-center items-center container mx-auto min-h-screen">
+        <Clasificacion
+          listado={mejoresPeliculasHoy}
+          titulo="Películas más populares hoy"
+          tipo="Peliculas"
+        />
+        <Clasificacion
+          listado={mejoresSeriesHoy}
+          titulo="Series más populares hoy"
+          tipo="Series"
+        />
+        <Clasificacion
+          listado={mejoresActoresHoy}
+          titulo="Actores más populares hoy"
+          tipo="Persona"
+        />
       </div>
     </>
   );

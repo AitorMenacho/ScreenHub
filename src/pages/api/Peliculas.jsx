@@ -47,7 +47,7 @@ const PeliculasApi = () => {
     //Petición que me devuelve las películas que están en tendencia
     const getTendencia = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES&page=1&region=es`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=es-ES`
       );
       const data = await response.json();
       setTendencia(data.results);
