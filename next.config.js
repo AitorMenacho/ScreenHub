@@ -8,6 +8,7 @@ const nextConfig = {
       "images.pexels.com",
       "tailwindui.com",
       "image.tmdb.org",
+      "via.placeholder.com",
     ],
   },
   // experimental: {

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Filtrado from "@/components/cuenta/Filtrado";
 import ResultadoFiltrado from "@/components/cuenta/ResultadoFiltrado";
 import Cabecera from "@/components/cuenta/Cabecera";
+import logo from "public/logoSolo.png";
 
 const Cuenta = () => {
   const { sessionId, username } = useContext(UserContext);
@@ -42,16 +43,62 @@ const Cuenta = () => {
         : 0;
 
     // Sacamos una foto aleatoria de las series favoritas
-    setBackgroundImage(
+
+    let background;
+
+    if (
       peliculasFavoritas &&
-        peliculasFavoritas.totalResults &&
-        peliculasFavoritas.totalResults.length > 0
-        ? `url('https://image.tmdb.org/t/p/original${peliculasFavoritas.totalResults[fotoPeli]?.backdrop_path}')`
-        : "none"
-    );
+      peliculasFavoritas.totalResults &&
+      peliculasFavoritas.totalResults.length > 0
+    ) {
+      background = `url('https://image.tmdb.org/t/p/original${peliculasFavoritas.totalResults[fotoPeli]?.backdrop_path}')`;
+    } else if (
+      seriesFavoritas &&
+      seriesFavoritas.totalResults &&
+      seriesFavoritas.totalResults.length > 0
+    ) {
+      background = `url('https://image.tmdb.org/t/p/original${seriesFavoritas.totalResults[0]?.backdrop_path}')`;
+    } else if (
+      peliculasVistas &&
+      peliculasVistas.totalResults &&
+      peliculasVistas.totalResults.length > 0
+    ) {
+      background = `url('https://image.tmdb.org/t/p/original${peliculasVistas.totalResults[0]?.backdrop_path}')`;
+    } else if (
+      seriesVistas &&
+      seriesVistas.totalResults &&
+      seriesVistas.totalResults > 0
+    ) {
+      background = `url('https://image.tmdb.org/t/p/original${seriesVistas.totalResults[0]?.backdrop_path}')`;
+    } else if (
+      peliculasPendientes &&
+      peliculasPendientes.totalResults &&
+      peliculasPendientes.totalResults.length > 0
+    ) {
+      background = `url('https://image.tmdb.org/t/p/original${peliculasPendientes.totalResults[0]?.backdrop_path}')`;
+    } else if (
+      seriesPendientes &&
+      seriesPendientes.totalResults &&
+      seriesPendientes.totalResults.length > 0
+    ) {
+      background = `url('https://image.tmdb.org/t/p/original${seriesPendientes.totalResults[0]?.backdrop_path}')`;
+    } else {
+      background = `url('https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg')`;
+    }
+
+    setBackgroundImage(background);
 
     setFotoPerfil(datos && datos.avatar?.tmdb.avatar_path);
-  }, [datos.id, peliculasFavoritas, datos]);
+  }, [
+    datos.id,
+    peliculasFavoritas,
+    seriesFavoritas,
+    peliculasVistas,
+    seriesVistas,
+    peliculasPendientes,
+    seriesPendientes,
+    datos,
+  ]);
 
   useEffect(() => {
     if (filter === "peliculasVistas") {
@@ -97,7 +144,11 @@ const Cuenta = () => {
       ) : (
         <>
           <Cabecera
-            fotoPerfil={fotoPerfil}
+            fotoPerfil={
+              fotoPerfil !== null
+                ? `https://image.tmdb.org/t/p/w500${fotoPerfil}`
+                : logo
+            }
             backgroundImage={backgroundImage}
             nombre={datos.name}
             peliculasVistas={peliculasVistas}

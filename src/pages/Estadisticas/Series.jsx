@@ -28,14 +28,22 @@ const Series = () => {
                 Categorías vistas
               </h2>
               <div className="flex flex-wrap justify-between">
-                <GraficoTartaSeries
-                  seriesVistas={seriesVistas.totalResults}
-                  titulo={"Cantidad de series por categoría"}
-                />
-                <GraficoBarrasSeries
-                  series={seriesVistas.totalResults}
-                  titulo={"Cantidad de series por año"}
-                />
+                {seriesVistas.totalResults.length > 0 ? (
+                  <>
+                    <GraficoTartaSeries
+                      seriesVistas={seriesVistas.totalResults}
+                      titulo={"Cantidad de series por categoría"}
+                    />
+                    <GraficoBarrasSeries
+                      series={seriesVistas.totalResults}
+                      titulo={"Cantidad de series por año"}
+                    />
+                  </>
+                ) : (
+                  <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                    No hay series vistas
+                  </h2>
+                )}
               </div>
             </div>
             <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
@@ -43,14 +51,22 @@ const Series = () => {
                 Categorías pendientes
               </h2>
               <div className="flex flex-wrap justify-between">
-                <GraficoTartaSeries
-                  seriesVistas={seriesPendientes.totalResults}
-                  titulo={"Cantidad de series por categoría"}
-                />
-                <GraficoBarrasSeries
-                  series={seriesPendientes.totalResults}
-                  titulo={"Cantidad de series por año"}
-                />
+                {seriesPendientes.totalResults.length > 0 ? (
+                  <>
+                    <GraficoTartaSeries
+                      seriesVistas={seriesPendientes.totalResults}
+                      titulo={"Cantidad de series por categoría"}
+                    />
+                    <GraficoBarrasSeries
+                      series={seriesPendientes.totalResults}
+                      titulo={"Cantidad de series por año"}
+                    />
+                  </>
+                ) : (
+                  <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                    No hay series pendientes
+                  </h2>
+                )}
               </div>
             </div>
             <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
@@ -58,14 +74,22 @@ const Series = () => {
                 Categorías vistas
               </h2>
               <div className="flex flex-wrap justify-between">
-                <GraficoTartaSeries
-                  seriesVistas={seriesFavoritas.totalResults}
-                  titulo={"Cantidad de series por categoría"}
-                />
-                <GraficoBarrasSeries
-                  series={seriesFavoritas.totalResults}
-                  titulo={"Cantidad de series por año"}
-                />
+                {seriesFavoritas.totalResults.length > 0 ? (
+                  <>
+                    <GraficoTartaSeries
+                      seriesVistas={seriesFavoritas.totalResults}
+                      titulo={"Cantidad de series por categoría"}
+                    />
+                    <GraficoBarrasSeries
+                      series={seriesFavoritas.totalResults}
+                      titulo={"Cantidad de series por año"}
+                    />
+                  </>
+                ) : (
+                  <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                    No hay series favoritas
+                  </h2>
+                )}
               </div>
             </div>
           </div>

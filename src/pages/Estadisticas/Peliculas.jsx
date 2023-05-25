@@ -27,14 +27,22 @@ const Peliculas = () => {
                 Películas vistas
               </h2>
               <div className="flex flex-wrap justify-between">
-                <GraficoTartaPelis
-                  pelis={peliculasVistas.totalResults}
-                  titulo={"Cantidad de películas por categoría"}
-                />
-                <GraficoBarrasPelis
-                  pelis={peliculasVistas.totalResults}
-                  titulo={"Cantidad de películas por año"}
-                />
+                {peliculasVistas.totalResults.length > 0 ? (
+                  <>
+                    <GraficoTartaPelis
+                      pelis={peliculasVistas.totalResults}
+                      titulo={"Cantidad de películas por categoría"}
+                    />
+                    <GraficoBarrasPelis
+                      pelis={peliculasVistas.totalResults}
+                      titulo={"Cantidad de películas por año"}
+                    />
+                  </>
+                ) : (
+                  <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                    No hay películas vistas
+                  </h2>
+                )}
               </div>
             </div>
             <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
@@ -42,14 +50,22 @@ const Peliculas = () => {
                 Películas pendientes
               </h2>
               <div className="flex flex-wrap justify-between">
-                <GraficoTartaPelis
-                  pelis={peliculasPendientes.totalResults}
-                  titulo={"Cantidad de películas por categoría"}
-                />
-                <GraficoBarrasPelis
-                  pelis={peliculasPendientes.totalResults}
-                  titulo={"Cantidad de películas por año"}
-                />
+                {peliculasPendientes.totalResults.length > 0 ? (
+                  <>
+                    <GraficoTartaPelis
+                      pelis={peliculasPendientes.totalResults}
+                      titulo={"Cantidad de películas por categoría"}
+                    />
+                    <GraficoBarrasPelis
+                      pelis={peliculasPendientes.totalResults}
+                      titulo={"Cantidad de películas por año"}
+                    />
+                  </>
+                ) : (
+                  <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                    No hay películas pendientes
+                  </h2>
+                )}
               </div>
             </div>
             <div className="bg-stone-800 rounded-xl w-2/3 flex flex-col p-10 mt-5">
@@ -57,14 +73,22 @@ const Peliculas = () => {
                 Películas favoritas
               </h2>
               <div className="flex flex-wrap justify-between">
-                <GraficoTartaPelis
-                  pelis={peliculasFavoritas.totalResults}
-                  titulo={"Cantidad de películas por categoría"}
-                />
-                <GraficoBarrasPelis
-                  pelis={peliculasFavoritas.totalResults}
-                  titulo={"Cantidad de películas por año"}
-                />
+                {peliculasFavoritas.totalResults.length > 0 ? (
+                  <>
+                    <GraficoTartaPelis
+                      pelis={peliculasFavoritas.totalResults}
+                      titulo={"Cantidad de películas por categoría"}
+                    />
+                    <GraficoBarrasPelis
+                      pelis={peliculasFavoritas.totalResults}
+                      titulo={"Cantidad de películas por año"}
+                    />
+                  </>
+                ) : (
+                  <h2 className="text-3xl font-bold text-white mb-5 text-center">
+                    No hay películas favoritas
+                  </h2>
+                )}
               </div>
             </div>
           </div>
