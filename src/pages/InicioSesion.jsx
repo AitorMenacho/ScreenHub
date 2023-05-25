@@ -5,28 +5,113 @@ import IniciarSesion from "./api/IniciarSesion";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
+const getToken = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+  );
+  const data = await response.json();
+  return data.request_token;
+};
+
+const getValidaToken = async (usuario, contrasenna, token) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: usuario,
+        password: contrasenna,
+        request_token: token,
+      }),
+    }
+  );
+
+  const data = await response.json();
+  return data.request_token;
+};
+
+const getSessionId = async (token) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/authentication/session/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        request_token: token,
+      }),
+    }
+  );
+
+  const data = await response.json();
+  return data.session_id;
+};
+
 export default function InicioSesion() {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
-  const [submit, setSubmit] = useState(false);
+  const [token, setToken] = useState("");
 
   const MySwal = withReactContent(Swal);
 
-  const { sessionId } = IniciarSesion(usuario, password);
+  const handleSubmit = async () => {
+    const token = await getToken();
+    const validaToken = await getValidaToken(usuario, password, token);
+    const sessionId = await getSessionId(validaToken);
 
-  const handleSubmit = () => {
-    setSubmit(true);
-  };
-
-  useEffect(() => {
-    if (submit) {
-      if (sessionId) {
+    if (sessionId) {
+      MySwal.fire({
+        position: "center",
+        icon: "success",
+        title: "Iniciaste sesión correctamente",
+        showConfirmButton: false,
+        timer: 3000,
+        background: "#0c0a09",
+        color: "#fff",
+      }).then(() => {
         localStorage.setItem("sessionId", sessionId);
         localStorage.setItem("usuario", usuario);
         window.location.href = "/Cuenta/Cuenta";
-      }
+      });
+      
+    } else {
+      MySwal.fire({
+        position: "center",
+        icon: "error",
+        title: "Usuario o contraseña incorrectos",
+        showConfirmButton: false,
+        timer: 3000,
+        background: "#0c0a09",
+        color: "#fff",
+      });
     }
-  }, [submit, sessionId, usuario]);
+  };
+
+  const hanldleRegister = () => {
+    alert(
+      "Se abrirá una nueva ventana para que puedas registrarte al registrar tu cuenta, vuelve a esta pestaña para iniciar sesión"
+    );
+
+    const newWindow = window.open(
+      "https://www.themoviedb.org/account/signup?language=es-ES",
+      "_blank",
+      "width=700,height=700"
+    );
+  };
+
+  // useEffect(() => {
+  //   if (submit) {
+  //     if (sessionId) {
+  //       localStorage.setItem("sessionId", sessionId);
+  //       localStorage.setItem("usuario", usuario);
+  //       window.location.href = "/Cuenta/Cuenta";
+  //     }
+  //   }
+  // }, [submit, sessionId, usuario]);
 
   return (
     <>
@@ -46,7 +131,7 @@ export default function InicioSesion() {
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <div className="space-y-6">
               <div>
                 <label
                   htmlFor="usuario"
@@ -99,23 +184,22 @@ export default function InicioSesion() {
 
               <div>
                 <button
-                  type="submit"
                   className="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-stone-950 shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
                   onClick={handleSubmit}
                 >
                   Iniciar sesión
                 </button>
               </div>
-            </form>
+            </div>
 
             <p className="mt-10 text-center text-sm text-white">
               ¿No eres miembro?{" "}
-              <Link
-                href="#"
+              <button
+                onClick={hanldleRegister}
                 className="font-semibold leading-6 text-yellow-400 hover:text-yellow-500"
               >
                 Regístrate ahora
-              </Link>
+              </button>
             </p>
           </div>
         </div>

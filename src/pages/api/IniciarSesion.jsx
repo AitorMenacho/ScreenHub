@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const IniciarSesion = (usuario, contrasenna) => {
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
   const [sessionId, setSessionId] = useState("");
 
   useEffect(() => {

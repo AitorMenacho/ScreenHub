@@ -4,6 +4,7 @@ import {
   ServerIcon,
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
+import fotoEjemplo from "../../public/fotoEjemplo.png";
 
 const features = [
   {
@@ -66,7 +67,7 @@ export default function FeatureSection() {
             </div>
           </div>
           <Image
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            src={fotoEjemplo}
             alt="Product screenshot"
             className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
             width={2432}
