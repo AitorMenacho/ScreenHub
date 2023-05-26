@@ -15,7 +15,7 @@ export default function Opciones() {
   const [checkedItemsValoracion, setCheckedItemsValoracion] = useState({});
   const [checkedItemsTipo, setCheckedItemsTipo] = useState({});
   const [valoracion, setValoracion] = useState({});
-  const [tipo, setTipo] = useState({});
+  const [tipo, setTipo] = useState('');
   const [generos, setGeneros] = useState([]);
   const [plataformas, setPlataformas] = useState([]);
   const [fechaLanzamiento, setFechaLanzamiento] = useState([
@@ -78,6 +78,7 @@ export default function Opciones() {
       <h1 className="text-4xl font-bold text-center mb-10">
         ¿Necesitas ayuda?
       </h1>
+      <h4>*Escoge serie o película para comenzar</h4>
       <div className="grid grid-cols-2">
         <div className="bg-stone-800 p-5 mt-5 mr-5 rounded-xl">
           <h1 className="text-4xl font-bold text-center mb-10">
@@ -181,10 +182,12 @@ export default function Opciones() {
         </div>
       </div>
       <div className="flex justify-center">
-        <button className=" p-5 mt-5" onClick={handleClick}>
-          <p className="text-2xl bg-yellow-500 p-2 rounded-xl text-stone-950 text-center mb-10">
-            Filtrar películas
-          </p>
+        <button
+          className=" mt-5 text-2xl bg-yellow-500 p-2 rounded-xl text-stone-950 mb-10 disabled:bg-yellow-200 disabled:cursor-not-allowed"
+          onClick={handleClick}
+          disabled={tipo === ""}
+        >
+          Filtrar películas
         </button>
       </div>
     </div>
