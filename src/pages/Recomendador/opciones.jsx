@@ -15,7 +15,7 @@ export default function Opciones() {
   const [checkedItemsValoracion, setCheckedItemsValoracion] = useState({});
   const [checkedItemsTipo, setCheckedItemsTipo] = useState({});
   const [valoracion, setValoracion] = useState({});
-  const [tipo, setTipo] = useState('');
+  const [tipo, setTipo] = useState("");
   const [generos, setGeneros] = useState([]);
   const [plataformas, setPlataformas] = useState([]);
   const [fechaLanzamiento, setFechaLanzamiento] = useState([
@@ -58,6 +58,8 @@ export default function Opciones() {
       [e.target.name]: e.target.checked,
     });
     setTipo(e.target.name);
+    setGeneros([]);
+    setCheckedItems({});
   };
 
   function handleClick() {
