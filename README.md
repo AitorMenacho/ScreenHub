@@ -16,7 +16,30 @@ ScreenHub es una plataforma para cinéfilos y amantes de las series donde podrá
 
 ## Cómo utilizar :construction: Este proyecto está en construcción :construction:
 
-Puedes disfrutar de las funciones realizadas hasta el momento simplemente entrando en la web [ScreenHub](https://screenhub.herokuapp.com/)
+Puedes disfrutar de las funciones realizadas hasta el momento simplemente entrando en la web [ScreenHub](https://screenhub.herokuapp.com/).
+Para ejecutarlo en localhost sigue los siguientes pasos:
+
+Instala los paquetes necesarios para ejecutar la aplicación
+- npm install
+
+Ejecuta el constructor
+- npm run build
+  
+Inicia la aplicación
+- npm run start -- -p 3000
+  
+### Utilizar en docker
+
+Para hacer la instalación en docker sigue los siguientes pasos:
+
+Instala los paquetes necesario para ejecutar la aplicación
+- npm install
+
+Monta la aplicación dentro de docker
+- docker build -t screenhub .
+
+Arranca la aplicación en el puerto 3000
+- docker run --name=ScreenHub -p 3000:3000 screenhub
 
 ## :hammer: Funcionalidades del proyecto
 
@@ -26,7 +49,6 @@ Puedes disfrutar de las funciones realizadas hasta el momento simplemente entran
 - [x] Series: Sección donde podrás ver los últimos lanzamientos, las más valoradas, etc.
 - [x] Perfil: Donde podrás ver todos los detalles sobre ti.
 - [ ] Listas personalizadas: organiza tus películas y series vistas y por ver en listas personalizadas, para tener un seguimiento de todo lo que has visto y lo que te gustaría ver en el futuro.
-- [ ] Recomendaciones personalizadas: basadas en tus películas y series vistas, ScreenHub te sugiere otros títulos que podrían interesarte.
 - [x] Recomendaciones generales: ScreenHub también te ofrece recomendaciones de películas y series generales, para que puedas descubrir nuevos títulos y expandir tus gustos
 
 ## :warning: Limitaciones y problemas conocidos

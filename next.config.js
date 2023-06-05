@@ -11,9 +11,10 @@ const nextConfig = {
       "via.placeholder.com",
     ],
   },
-  // experimental: {
-  //   output: "standalone",
-  // },
+  experimental: {
+    // Obligatorio para exportar en docker
+    outputStandalone: true,
+  },
 };
 
 module.exports = nextConfig;

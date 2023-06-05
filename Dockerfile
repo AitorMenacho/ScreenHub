@@ -1,20 +1,20 @@
-FROM node:16-alpine
+# FROM node:16-alpine
 
-RUN mkdir -p /app
+# RUN mkdir -p /app
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.json /app
+# COPY package.json /app
 
-RUN npm install
+# RUN npm install
 
-COPY . /app
+# COPY . /app
 
-RUN npm run build
+# RUN npm run build
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+# CMD ["npm", "run", "start"]
 
 # Fuente: https://github.com/vercel/next.js/blob/canary/examples/with-docker/README.md
 
